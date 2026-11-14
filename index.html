@@ -19,7 +19,8 @@
   :root{ --accent:#7cc6f2; --accent2:#4f9de0; --glow:rgba(124,198,242,.55); --ink:#16233f; --cream:#f6f4ee; --panel:rgba(22,35,63,.62); --pink:#ff9fc4; }
   body.break{ --accent:#a8e0ff; --glow:rgba(168,224,255,.65); }
   *{box-sizing:border-box;margin:0;padding:0}
-  html{background:#3a2c26;touch-action:manipulation}
+  html{background:#6e4a36;touch-action:manipulation}
+  #lvh{position:fixed;left:0;top:0;width:1px;height:100vh;height:100lvh;visibility:hidden;pointer-events:none}
   html,body{height:100%;overflow:hidden;overscroll-behavior:none;-webkit-user-select:none;user-select:none;
     -webkit-touch-callout:none;-webkit-tap-highlight-color:transparent;color:var(--cream);
     font-family:'Press Start 2P',ui-monospace,monospace;-webkit-font-smoothing:none}
@@ -77,10 +78,10 @@
   .auto .box svg{width:10px;height:10px;display:none;fill:var(--ink);shape-rendering:crispEdges}
   .auto input:checked + .box{background:var(--accent)} .auto input:checked + .box svg{display:block}
   .auto input:focus-visible + .box{outline:2px dashed var(--cream);outline-offset:3px}
-  .tip{position:absolute;bottom:calc(100% + 12px);left:50%;transform:translateX(-50%);z-index:5;width:max-content;max-width:min(270px,82vw);padding:9px 11px;
+  .tip{position:absolute;bottom:calc(100% + 12px);left:0;z-index:5;width:max-content;max-width:min(270px,82vw);padding:9px 11px;
     background:rgba(14,22,42,.95);border:2px solid var(--cream);font-size:7px;line-height:1.8;text-align:left;text-shadow:none;opacity:0;visibility:hidden;transition:opacity .15s;pointer-events:none}
-  .tip::after{content:"";position:absolute;top:100%;left:50%;margin-left:-5px;border:5px solid transparent;border-top-color:var(--cream)}
-  .auto:hover .tip,.auto:focus-within .tip{opacity:1;visibility:visible}
+  .tip::after{content:"";position:absolute;top:100%;left:var(--arrow,14px);margin-left:-5px;border:5px solid transparent;border-top-color:var(--cream)}
+  @media (hover:hover){.auto:hover .tip{opacity:1;visibility:visible}} .auto:has(input:focus-visible) .tip,.auto.show .tip{opacity:1;visibility:visible}
   .sessions{display:flex;align-items:center;gap:8px;padding:6px 10px;background:rgba(22,35,63,.5);font-size:7px;text-shadow:2px 2px 0 var(--ink)}
   .dots{display:flex;gap:6px}
   .dots i{width:10px;height:13px;background:var(--panel);clip-path:polygon(50% 0,100% 55%,100% 85%,80% 100%,20% 100%,0 85%,0 55%);outline:none;position:relative}
@@ -111,14 +112,21 @@
     button{padding:9px 11px} .controls .primary{padding:11px 14px}
   }
   @media (max-height:520px) and (orientation:landscape){
-    .ui{padding:6px 16px;gap:6px} .hint,.hbd,.stamp,.sessions{display:none} .badge{padding:6px 12px} .badge h1{font-size:14px} .ribbon{margin-top:5px;padding:4px 10px;font-size:7px}
-    .dial{width:min(40vh,160px)} .time{font-size:20px} .center{gap:6px}
+    .ui{justify-content:center;padding:max(6px,env(safe-area-inset-top)) calc(12px + env(safe-area-inset-right)) max(6px,env(safe-area-inset-bottom)) 0;gap:5px}
+    .ui > *{width:min(36vw,330px)}
+    .hint,.hbd,.stamp,.sessions{display:none} .badge{padding:6px 12px 7px;border-width:2px} .badge h1{font-size:13px;letter-spacing:1px} .badge h1 em{margin-top:3px}
+    .ribbon{margin-top:4px;padding:3px 9px;font-size:6px}
+    .tabs{gap:5px} .tabs button{font-size:7px;padding:5px 7px}
+    .dial{width:min(34vh,140px)} .time{font-size:19px} .center{gap:5px}
+    button{padding:7px 9px;font-size:8px} .controls{gap:8px} .controls .primary{min-width:84px;font-size:9px;padding:8px 11px}
+    .auto{font-size:7px} .sessions{font-size:6px}
+    .sound{top:max(8px,env(safe-area-inset-top));right:auto;left:calc(8px + env(safe-area-inset-left));padding:4px 8px 4px 4px} .sound svg{width:18px;height:18px} #vol{width:64px}
   }
 </style>
 </head>
 <body>
 <div class="stage" id="stage"><canvas id="scene" aria-hidden="true"></canvas></div>
-<div class="fx"></div>
+<div class="fx"></div><div id="lvh"></div>
 <main class="ui">
   <header class="badge" aria-label="Nu•Dee pomodoro, birthday edition">
     <div class="stamp">LIMITED<br>1 of 1</div>
@@ -195,7 +203,8 @@ const inWin=(x,y)=>x>=win.x0&&x<win.x1&&y>=win.y0&&y<win.y1&&!(y<win.y0+win.arch
 /* ---------- ขนาดจอ ---------- */
 function viewSize(){
   const r=document.querySelector('.fx').getBoundingClientRect();
-  let w=Math.max(r.width,innerWidth), h=Math.max(r.height,innerHeight);
+  const lv=document.getElementById('lvh').getBoundingClientRect().height||0;
+  let w=Math.max(r.width,innerWidth), h=Math.max(r.height,innerHeight,lv);
   if(navigator.standalone){ const a=Math.min(screen.width,screen.height), b=Math.max(screen.width,screen.height);
     if(w>h){ w=Math.max(w,b); h=Math.max(h,a);} else { w=Math.max(w,a); h=Math.max(h,b);} }
   return [Math.round(w),Math.round(h)];
@@ -225,7 +234,6 @@ function build(){
   glass=[]; trails=[]; wxParts=[]; skyC=[]; skyT=[];
   buildStrips();
   for(let s=0;s<5;s++) renderSky(s);
-  if(stage===4) islandX=win.x0+(win.x1-win.x0)*.76;
   buildInterior();
   buildSouvenirs();
 }
@@ -242,7 +250,7 @@ const CITIES=[
   {name:'snow village',  skyN:['#0b1430','#10203f','#16294d','#1c345c','#2c4f7a'], skyD:['#7fb6ea','#9fcaf0','#c3def5','#e4f0fa','#fffaf0'], beam:'#fff1c8', wx:'snow'},
   {name:'birthday party',skyN:['#4f9de0','#7cbbe9','#b9d4f0','#f8d4c4','#ffd8a0'], skyD:['#4f9de0','#7cbbe9','#b9d4f0','#f8d4c4','#ffd8a0'], beam:'#ffd27a', wx:'confetti'},
 ];
-let stage=0, prevStage=0, stageFade=1, travel=0, speed=.25, speedTarget=.25, strips=[], skyC=[], skyT=[], islandX=0, wxParts=[], balloons=[];
+let stage=0, prevStage=0, stageFade=1, travel=0, speed=.25, speedTarget=.25, strips=[], skyC=[], skyT=[], arriveT=-99, leaveT=-99, wxParts=[], balloons=[];
 
 function renderSky(s){
   if(!skyC[s]) skyC[s]=mk(W,H);
@@ -364,14 +372,23 @@ function drawCity(s,alpha){
   }
   if(theme<1){ const off=Math.round(-((travel*.45)%st.L)); ctx.globalCompositeOperation='lighter'; ctx.globalAlpha=alpha*(1-theme)*(s===1?.85+.15*Math.sin(time*7)*Math.sin(time*3):.9);
     ctx.drawImage(st.lights,off,0); ctx.drawImage(st.lights,off+st.L,0); ctx.globalCompositeOperation='source-over'; }
-  if(s===4) drawIsland(islandX);
   ctx.globalAlpha=1;
 }
-function setStage(s){ if(s===stage) return; prevStage=stage; stage=s; stageFade=0; wxParts=[]; if(s===4){ islandX=win.x1+50; } }
+function setStage(s){ if(s===stage) return; prevStage=stage; stage=s; stageFade=0; wxParts=[]; if(s===4) arriveT=time; if(prevStage===4) leaveT=time; }
+/* เกาะงานวันเกิด: ตอนเริ่ม long break เกาะค่อยๆ ลอยเข้ามาจากขอบขวาพร้อมลอยขึ้นจากด้านล่าง แล้วชะลอจอดตรงหน้าต่าง (8 วินาที)
+   จบ long break เกาะค่อยๆ ไหลออกไปทางซ้าย คำนวณจากเวลา จึงไม่กระโดดเวลาหมุนจอ */
+function drawPartyIsland(){
+  const w=Math.min(34,Math.round((win.x1-win.x0)*.3)), target=win.x0+(win.x1-win.x0)*.76, bob=Math.sin(time*.8)*1.2;
+  let x, dy=0;
+  if(stage===4){ const p=Math.min(1,(time-arriveT)/8), e=p*p*(3-2*p), start=win.x1+w+14; x=start+(target-start)*e; dy=(1-e)*10; }
+  else if(time-leaveT<6){ const p=(time-leaveT)/6, e=p*p, end=win.x0-w-14; x=target+(end-target)*e; dy=-e*4; }
+  else return;
+  ctx.globalAlpha=1; drawIsland(x, Math.round(dy+bob));
+}
 
 /* เกาะงานวันเกิด (ปลายทาง) */
-function drawIsland(ix){
-  const w=Math.min(34,Math.round((win.x1-win.x0)*.3)), top=win.y1-Math.round((win.y1-win.y0)*.3);
+function drawIsland(ix,dy=0){
+  const w=Math.min(34,Math.round((win.x1-win.x0)*.3)), top=win.y1-Math.round((win.y1-win.y0)*.3)+dy;
   for(let y=0;y<12;y++){ const hw=Math.round(w*(1-y/12)); ctx.fillStyle=y<2?'#7cc67f':'#8a6a52'; ctx.fillRect(Math.round(ix-hw),top+y,hw*2+1,1); }
   ctx.fillStyle='#5aa469'; ctx.fillRect(Math.round(ix-w),top,w*2+1,2);
   const tx=Math.round(ix-6); for(let r=0;r<8;r++){ const hw=r; for(let x=-hw;x<=hw;x++){ ctx.fillStyle=(Math.floor((x+20)/2)&1)?'#ffffff':'#7cc6f2'; ctx.fillRect(tx+x,top-8+r,1,1);} }
@@ -456,7 +473,7 @@ function buildInterior(){
     // กรอบรูปหนูบนผนัง
     const fx=Math.round((rx+W)/2)-6, fy=Math.round(H*.18); g.fillStyle='#8a5a3e'; g.fillRect(fx-1,fy-1,14,12); g.fillStyle='#e8f2fa'; g.fillRect(fx,fy,12,10); g.fillStyle='#f7a8c8'; ell(g,fx+6,fy+6,3,2); disc(g,fx+3,fy+3,1); disc(g,fx+9,fy+3,1);
   }
-  if(portrait){ armorP={x:W-14,y:H-3}; katP={x:11,y:H-3}; }   // มือถือ: ยืนบนพื้นข้างหน้าต่าง
+  if(portrait){ armorP={x:W-14,y:H-5}; katP={x:11,y:H-5}; }   // มือถือ: ยืนบนพื้นข้างหน้าต่าง
   // ขอบกระจกสำหรับหน้าต่างอัจฉริยะ เรียงตามมุมรอบจุดกลาง จะได้วิ่งแสงวนรอบได้
   hudEdge=[]; { const cx=(x0+x1)/2, cy=(y0+y1)/2;
     for(let y=y0;y<y1;y++) for(let x=x0;x<x1;x++) if(inWin(x,y) && (!inWin(x-1,y)||!inWin(x+1,y)||!inWin(x,y-1)||!inWin(x,y+1))) hudEdge.push([x,y,Math.atan2(y-cy,x-cx)]);
@@ -591,12 +608,12 @@ function frame(now){
   for(const s of [stage,prevStage]) if(Math.abs(theme-skyT[s])>.02 || (theme===themeTarget && skyT[s]!==theme)) renderSky(s);
   speed+=(speedTarget-speed)*Math.min(1,dt*.6); travel+=18*speed*dt;
   if(stageFade<1) stageFade=Math.min(1,stageFade+dt/2.5);
-  if(stage===4){ const target=win.x0+(win.x1-win.x0)*.76; islandX+=(target-islandX)*Math.min(1,dt*.5); }
   updateMouse(dt); updateGlass(dt); updateSouvenirs();
 
   ctx.fillStyle='#1b2b4d'; ctx.fillRect(0,0,W,H);
   if(stageFade<1) drawCity(prevStage,1);
   drawCity(stage,stageFade);
+  drawPartyIsland();
   drawWeather(dt);
   // หยดน้ำบนกระจก
   ctx.fillStyle='#d8ecfa';
@@ -972,6 +989,14 @@ $('reset').onclick=()=>setMode(mode);
 $('skip').onclick=()=>advance(false);
 $('minus').onclick=()=>adjust(-1); $('plus').onclick=()=>adjust(1);
 autoBox.onchange=()=>{ Sound.click(autoBox.checked?'on':'off'); render(); };
+// คำอธิบาย auto run: บนมือถือแตะแล้วโชว์ 3 วินาทีแล้วหายเอง และขยับไม่ให้ล้นขอบจอ
+{ const lab=document.querySelector('.auto'), tip=$('autoTip'); let tt=0;
+  const place=()=>{ tip.style.left='0px'; const r=tip.getBoundingClientRect(), lr=lab.getBoundingClientRect(); let dx=0;
+    if(r.right>innerWidth-8) dx=innerWidth-8-r.right; if(r.left+dx<8) dx=8-r.left;
+    tip.style.left=dx+'px'; tip.style.setProperty('--arrow',Math.max(8,Math.min(r.width-8,lr.width/2-dx))+'px'); };
+  lab.addEventListener('mouseenter',place);
+  lab.addEventListener('touchstart',()=>{ place(); lab.classList.add('show'); clearTimeout(tt); tt=setTimeout(()=>lab.classList.remove('show'),3000); },{passive:true});
+  addEventListener('resize',()=>lab.classList.remove('show')); }
 document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>setMode(b.dataset.mode));
 // เสียงกดปุ่ม: ปุ่ม start เป็นเสียงกริ๊งขึ้น ปุ่มอื่นเป็นเสียงป๊อปเบาๆ
 document.addEventListener('click',e=>{

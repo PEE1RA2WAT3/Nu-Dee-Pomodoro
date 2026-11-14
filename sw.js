@@ -1,6 +1,6 @@
 // Service worker: keeps a copy of the app so it opens even without internet.
 // When you change index.html, bump the version number below so users get the new version.
-const CACHE = 'nudee-rainy-v6';
+const CACHE = 'nudee-rainy-v7';
 const FILES = [
   './',
   './index.html',
