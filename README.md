@@ -1,4 +1,4 @@
-# Nu•Dee pomodoro · birthday edition 🐭🌧️💙
+# Nu•Dee pomodoro · birthday edition 🐭🌧️💙 created by Claude AI fellow🦾🤖🦿
 
 ตัวจับเวลา Pomodoro คาเฟ่จิ๋ววันฝนตก ทำขึ้นเป็นของขวัญวันเกิดให้ Nu•Dee (limited 1 of 1)
 ภาพ เสียง และเพลงทั้งหมดสร้างด้วยโค้ด ติดตั้งลงมือถือเป็นแอปได้ และใช้ออฟไลน์ได้
