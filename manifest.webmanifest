@@ -1,0 +1,16 @@
+{
+  "name": "Nu•Dee pomodoro · birthday edition",
+  "short_name": "Nu•Dee",
+  "description": "A rainy-day café pomodoro timer with a tiny pink mouse. Birthday edition, 1 of 1.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#16233f",
+  "theme_color": "#16233f",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

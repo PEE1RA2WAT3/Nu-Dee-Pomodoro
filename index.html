@@ -1,0 +1,1161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<title>Nu•Dee pomodoro · birthday edition</title>
+<meta name="theme-color" content="#16233f">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Nu•Dee">
+<link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABuElEQVR4XmNgGAUDDBipYX+Vdcx/XOa0HV2C1w4WbBpJMRCktjY3B58//uNzBIYDQAam2fsQZSA2yznsNOB6fxy6wQB1HDiEsDmEiRpRQAlACQFsvpfP8WB4OGUHUXYg+x4EQHykUAABjOjAmgZgAGQ5CMBokEOg0QMOUljco1tMCsDqAJiF9ACDKw3AACzO0UNCXE8BrKRWDzXbgeIZFufYQPPkKWBhbLkAbxoAOQRmKTEA5hBkALKc6HIAqhBeqhEoD8DAuCCD4erz82D2j5UnUfjVNrF4LQeBAU8DGA5ADi5ig19b0hCMYQDGB2VTfMU6CGCtKGCaCJTxRIGXczfB1SnsbsOwjypRwPH8NRyjA/FkP4ZZ3x6BMTZAFQdQAvDW1URUtXgBvvwPA3jLAVyAQ08Oq9SPS5jBjK8MwJoIP8za8b9r4RKwJLZEiMtyMHjzAUxVV7aBaUKWg8CApwEUB4B8L5DmgTdd4AUiAgw/nn3CrwYNDHgIoCRCkO/RQoFQgxMFgBIhocpn0IUA1vgGhQLMpaAcgZ4bcOWE6tQyolI+MiAqwf0/dA2l44Ge0IgpcEbBoAUAtTuzlpCUe18AAAAASUVORK5CYII=">
+<style>
+  /* Press Start 2P by CodeMan38, SIL Open Font License 1.1. Embedded so the app works offline. */
+  @font-face{font-family:"Press Start 2P";src:url(data:font/woff2;base64,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) format("woff2");font-display:block}
+
+  :root{ --accent:#7cc6f2; --accent2:#4f9de0; --glow:rgba(124,198,242,.55); --ink:#16233f; --cream:#f6f4ee; --panel:rgba(22,35,63,.62); --pink:#ff9fc4; }
+  body.break{ --accent:#a8e0ff; --glow:rgba(168,224,255,.65); }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{background:#3a2c26;touch-action:manipulation}
+  html,body{height:100%;overflow:hidden;overscroll-behavior:none;-webkit-user-select:none;user-select:none;
+    -webkit-touch-callout:none;-webkit-tap-highlight-color:transparent;color:var(--cream);
+    font-family:'Press Start 2P',ui-monospace,monospace;-webkit-font-smoothing:none}
+  .stage{position:fixed;left:0;top:0;width:100vw;height:100vh;overflow:hidden;z-index:0}
+  canvas#scene{position:absolute;left:0;top:0;image-rendering:pixelated;image-rendering:crisp-edges}
+  .fx{position:fixed;inset:0;pointer-events:none;z-index:1;background:radial-gradient(ellipse at 40% 45%,transparent 58%,rgba(10,16,34,.35) 100%)}
+  .ui{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;
+    gap:clamp(9px,1.9vh,18px);padding:calc(24px + 3vh) 16px 0;text-align:center}
+
+  /* ---------- ป้าย "limited / birthday edition" ---------- */
+  .badge{position:relative;display:flex;flex-direction:column;align-items:center;padding:14px 22px 12px;
+    background:rgba(22,35,63,.72);border:3px solid var(--cream);box-shadow:0 0 0 3px var(--accent2),6px 6px 0 3px rgba(10,16,34,.55)}
+  .badge::before,.badge::after{content:"";position:absolute;width:6px;height:6px;background:var(--accent);top:5px}
+  .badge::before{left:5px} .badge::after{right:5px}
+  .stamp{position:absolute;top:-14px;right:-18px;transform:rotate(9deg);font-size:7px;line-height:1.5;padding:5px 6px;
+    color:var(--ink);background:var(--pink);border:2px solid var(--cream);box-shadow:2px 2px 0 rgba(10,16,34,.5);letter-spacing:1px}
+  .badge h1{font-size:clamp(18px,4.2vw,30px);font-weight:400;letter-spacing:2px;line-height:1.25;text-shadow:3px 3px 0 var(--ink),0 0 14px var(--glow)}
+  .badge h1 em{display:block;font-style:normal;font-size:.42em;letter-spacing:5px;color:var(--accent);margin-top:6px}
+  .ribbon{position:relative;margin-top:10px;padding:7px 14px;font-size:9px;letter-spacing:2px;color:var(--cream);background:var(--accent2);
+    box-shadow:0 3px 0 #2f6fb0;text-shadow:2px 2px 0 #2f6fb0}
+  .ribbon::before,.ribbon::after{content:"";position:absolute;top:5px;width:12px;height:100%;background:#2f6fb0;z-index:-1}
+  .ribbon::before{left:-9px;clip-path:polygon(0 0,100% 0,100% 100%,0 100%,40% 50%)}
+  .ribbon::after{right:-9px;clip-path:polygon(0 0,100% 0,60% 50%,100% 100%,0 100%)}
+  .hbd{margin-top:10px;font-size:7px;letter-spacing:2px;color:var(--pink);text-shadow:2px 2px 0 var(--ink)}
+  .hbd b{font-weight:400;color:var(--accent);animation:beat 1.6s ease-in-out infinite;display:inline-block}
+  @keyframes beat{0%,100%{transform:scale(1)}15%{transform:scale(1.35)}30%{transform:scale(1)}}
+
+  .hint{font-size:9px;text-shadow:2px 2px 0 var(--ink);min-height:10px}
+  .hint.blink{animation:blink 1.4s steps(1) infinite}
+  @keyframes blink{50%{opacity:0}}
+  button{font-family:inherit;cursor:pointer;color:var(--cream);background:var(--panel);border:3px solid var(--cream);padding:10px 12px;font-size:9px;letter-spacing:1px;
+    box-shadow:4px 4px 0 rgba(10,16,34,.55);transition:background .2s}
+  button:hover{background:rgba(44,70,120,.85)}
+  button:active{transform:translate(2px,2px);box-shadow:2px 2px 0 rgba(10,16,34,.55)}
+  button:focus-visible{outline:2px dashed var(--cream);outline-offset:3px}
+  .tabs{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+  .tabs button{font-size:8px;padding:8px 10px;border-width:2px;box-shadow:3px 3px 0 rgba(10,16,34,.55)}
+  .tabs button.active{background:var(--accent);color:var(--ink)}
+  .dial{position:relative;width:min(56vw,230px,30vh);aspect-ratio:1;flex-shrink:0}
+  .dial::before{content:"";position:absolute;inset:8%;border-radius:50%;background:radial-gradient(circle,rgba(22,35,63,.58) 0 58%,rgba(22,35,63,0) 72%)}
+  #ring{position:absolute;inset:0;width:100%;height:100%;shape-rendering:crispEdges}
+  .tick{fill:rgba(246,244,238,.3);transition:fill .4s} .tick.on{fill:var(--accent)}
+  #ring .lit{filter:drop-shadow(0 0 3px var(--glow))}
+  .center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px}
+  .time{font-size:clamp(26px,7vw,40px);letter-spacing:1px;text-shadow:3px 3px 0 var(--ink),0 0 16px var(--glow)}
+  .adj{display:flex;align-items:center;gap:10px;font-size:7px;text-shadow:2px 2px 0 var(--ink)}
+  .adj button{padding:4px 7px;font-size:9px;border-width:2px;box-shadow:2px 2px 0 rgba(10,16,34,.55)}
+  .adj button:disabled{opacity:.35;cursor:default}
+  .controls{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+  .controls .primary{min-width:120px;background:var(--accent);color:var(--ink);font-size:11px;padding:13px 16px}
+  .row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;justify-content:center}
+  .auto{position:relative;display:flex;align-items:center;gap:8px;font-size:8px;cursor:pointer;padding:4px 10px 4px 4px;background:rgba(22,35,63,.5);text-shadow:2px 2px 0 var(--ink)}
+  .auto input{position:absolute;opacity:0;width:1px;height:1px}
+  .auto .box{width:16px;height:16px;border:2px solid var(--cream);background:var(--panel);display:grid;place-items:center}
+  .auto .box svg{width:10px;height:10px;display:none;fill:var(--ink);shape-rendering:crispEdges}
+  .auto input:checked + .box{background:var(--accent)} .auto input:checked + .box svg{display:block}
+  .auto input:focus-visible + .box{outline:2px dashed var(--cream);outline-offset:3px}
+  .tip{position:absolute;bottom:calc(100% + 12px);left:50%;transform:translateX(-50%);z-index:5;width:max-content;max-width:min(270px,82vw);padding:9px 11px;
+    background:rgba(14,22,42,.95);border:2px solid var(--cream);font-size:7px;line-height:1.8;text-align:left;text-shadow:none;opacity:0;visibility:hidden;transition:opacity .15s;pointer-events:none}
+  .tip::after{content:"";position:absolute;top:100%;left:50%;margin-left:-5px;border:5px solid transparent;border-top-color:var(--cream)}
+  .auto:hover .tip,.auto:focus-within .tip{opacity:1;visibility:visible}
+  .sessions{display:flex;align-items:center;gap:8px;padding:6px 10px;background:rgba(22,35,63,.5);font-size:7px;text-shadow:2px 2px 0 var(--ink)}
+  .dots{display:flex;gap:6px}
+  .dots i{width:10px;height:13px;background:var(--panel);clip-path:polygon(50% 0,100% 55%,100% 85%,80% 100%,20% 100%,0 85%,0 55%);outline:none;position:relative}
+  .dots i::after{content:"";position:absolute;inset:2px 2px 2px 2px;background:transparent;clip-path:inherit}
+  .dots i{background:var(--cream)} .dots i::after{background:rgba(22,35,63,.9)} .dots i.on::after{background:var(--accent)}
+  .sound{position:fixed;top:12px;right:12px;z-index:3;display:flex;align-items:center;gap:8px;padding:6px 10px 6px 6px;background:var(--panel);border:2px solid var(--cream);box-shadow:3px 3px 0 rgba(10,16,34,.55)}
+  .sound button{padding:4px;border:0;background:transparent;box-shadow:none;line-height:0}
+  .sound svg{width:22px;height:22px;shape-rendering:crispEdges}
+  .sound .waves,.sound .x{fill:var(--accent)} .sound .x{display:none}
+  .sound.muted .waves{display:none} .sound.muted .x{display:inline}
+  #vol{-webkit-appearance:none;appearance:none;width:84px;height:8px;background:rgba(246,244,238,.25);cursor:pointer;
+    background-image:linear-gradient(var(--accent),var(--accent));background-repeat:no-repeat;background-size:60% 100%}
+  #vol::-webkit-slider-thumb{-webkit-appearance:none;width:10px;height:16px;background:var(--cream);border:2px solid var(--ink)}
+  #vol::-moz-range-thumb{width:10px;height:16px;background:var(--cream);border:2px solid var(--ink);border-radius:0}
+  .sound.muted #vol{opacity:.45}
+  #install{position:fixed;top:12px;left:12px;z-index:3;font-size:8px;padding:8px 10px;border-width:2px}
+  #install[hidden]{display:none}
+  @supports(padding:env(safe-area-inset-top)){.sound{top:calc(12px + env(safe-area-inset-top))}#install{top:calc(12px + env(safe-area-inset-top))}}
+  .keys{position:fixed;bottom:8px;left:0;right:0;z-index:2;text-align:center;font-size:7px;color:rgba(246,244,238,.7);text-shadow:1px 1px 0 var(--ink)}
+  @media (max-height:560px),(hover:none){.keys{display:none}}
+  /* desktop: controls on the right, the window seat on the left stays clear */
+  @media (min-aspect-ratio:4/3){ .ui{align-items:flex-end;justify-content:center;padding:0 max(4vw,16px) 0 0}
+    .ui > *{width:min(33vw,420px);display:flex;flex-direction:row;justify-content:center} .ui .badge{flex-direction:column} .dial{width:min(28vw,230px,34vh)} }
+  @media (max-aspect-ratio:3/4){
+    .ui{padding:calc(58px + env(safe-area-inset-top)) 14px 0;gap:clamp(6px,1.1vh,11px)}
+    .badge{padding:10px 14px 9px} .badge h1{font-size:clamp(15px,4.6vw,20px)} .stamp{right:auto;left:-12px;transform:rotate(-9deg)} .ribbon{margin-top:7px;font-size:8px} .hbd{margin-top:7px}
+    .dial{width:min(46vw,180px,20vh)} .time{font-size:clamp(22px,6.5vw,30px)}
+    button{padding:9px 11px} .controls .primary{padding:11px 14px}
+  }
+  @media (max-height:520px) and (orientation:landscape){
+    .ui{padding:6px 16px;gap:6px} .hint,.hbd,.stamp,.sessions{display:none} .badge{padding:6px 12px} .badge h1{font-size:14px} .ribbon{margin-top:5px;padding:4px 10px;font-size:7px}
+    .dial{width:min(40vh,160px)} .time{font-size:20px} .center{gap:6px}
+  }
+</style>
+</head>
+<body>
+<div class="stage" id="stage"><canvas id="scene" aria-hidden="true"></canvas></div>
+<div class="fx"></div>
+<main class="ui">
+  <header class="badge" aria-label="Nu•Dee pomodoro, birthday edition">
+    <div class="stamp">LIMITED<br>1 of 1</div>
+    <h1>Nu•Dee<em>pomodoro</em></h1>
+    <div class="ribbon">BIRTHDAY EDITION</div>
+    <div class="hbd">happy birthday <b>♥</b> No.001</div>
+  </header>
+  <p class="hint blink" id="hint">press start to begin</p>
+  <nav class="tabs" aria-label="Mode">
+    <button data-mode="focus" class="active">focus</button>
+    <button data-mode="short">short break</button>
+    <button data-mode="long">long break</button>
+  </nav>
+  <div class="dial">
+    <svg id="ring" viewBox="0 0 120 120" aria-hidden="true"></svg>
+    <div class="center">
+      <div class="time" id="time" role="timer" aria-live="off">25:00</div>
+      <div class="adj"><button id="minus" aria-label="One minute less">-</button><span>minutes</span><button id="plus" aria-label="One minute more">+</button></div>
+    </div>
+  </div>
+  <div class="controls">
+    <button id="start" class="primary">start</button>
+    <button id="reset">reset</button>
+    <button id="skip">skip</button>
+  </div>
+  <div class="row">
+    <label class="auto">
+      <input type="checkbox" id="auto" aria-describedby="autoTip">
+      <span class="box" aria-hidden="true"><svg viewBox="0 0 7 7"><rect x="0" y="3" width="1" height="1"/><rect x="1" y="4" width="1" height="1"/><rect x="2" y="5" width="1" height="1"/><rect x="3" y="4" width="1" height="1"/><rect x="4" y="3" width="1" height="1"/><rect x="5" y="2" width="1" height="1"/><rect x="6" y="1" width="1" height="1"/><rect x="1" y="3" width="1" height="1"/><rect x="2" y="4" width="1" height="1"/></svg></span>
+      auto run
+      <span class="tip" id="autoTip" role="tooltip">When time is up, the next timer starts by itself: focus, break, focus... until all 4 raindrops are filled. After the long break it switches off and waits for you to press start.</span>
+    </label>
+    <div class="sessions"><div class="dots" id="dots"><i></i><i></i><i></i><i></i></div><span id="sessLabel">1 of 4</span></div>
+  </div>
+</main>
+<button id="install" hidden>install app</button>
+<div class="keys">space = start/pause &nbsp; r = reset &nbsp; m = mute</div>
+<div class="sound" id="sound">
+  <button id="mute" aria-label="Mute sound" title="Sound on/off (M)">
+    <svg viewBox="0 0 11 11" aria-hidden="true">
+      <rect x="1" y="4" width="2" height="3" fill="#f6f4ee"/><rect x="3" y="3" width="1" height="5" fill="#f6f4ee"/><rect x="4" y="2" width="1" height="7" fill="#f6f4ee"/><rect x="5" y="1" width="1" height="9" fill="#f6f4ee"/>
+      <g class="waves"><rect x="7" y="4" width="1" height="3"/><rect x="8" y="2" width="1" height="1"/><rect x="9" y="3" width="1" height="5"/><rect x="8" y="8" width="1" height="1"/></g>
+      <g class="x"><rect x="7" y="3" width="1" height="1"/><rect x="8" y="4" width="1" height="1"/><rect x="9" y="5" width="1" height="1"/><rect x="8" y="6" width="1" height="1"/><rect x="7" y="7" width="1" height="1"/><rect x="9" y="3" width="1" height="1"/><rect x="9" y="7" width="1" height="1"/></g>
+    </svg>
+  </button>
+  <input type="range" id="vol" min="0" max="100" value="60" aria-label="Volume">
+</div>
+
+<script>
+/* ======================================================================
+   PART 1 — คาเฟ่จิ๋วของหนู วันฝนตก (วาดด้วยโค้ดทั้งหมด)
+   focus: หนูนั่งริมหน้าต่าง อ่านหนังสือ / ถักผ้าพันคอสีฟ้า ข้างนอกฝนตก ไฟเมืองเบลอเป็นวงสีฟ้า
+   พัก:  หนูบิดขี้เกียจ แล้วจิบโกโก้หรืองีบหลับ ฝนหยุด มีรุ้งขึ้น
+   ====================================================================== */
+const cvs=document.getElementById('scene'), ctx=cvs.getContext('2d');
+let W,H,P,gY,portrait, win={}, sill=0, seat={};
+let interior=null, glass=[], trails=[], counterC=null, armorP=null, hudEdge=[], katP=null;
+let time=0, theme=0, themeTarget=0;
+
+function rng(seed){return function(){seed|=0;seed=seed+0x6D2B79F5|0;let t=Math.imul(seed^seed>>>15,1|seed);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+let R=rng(1);
+const ri=(a,b)=>Math.floor(a+R()*(b-a+1)), rf=(a,b)=>a+R()*(b-a), pick=a=>a[Math.floor(R()*a.length)];
+const rnd=(a,b)=>a+Math.random()*(b-a), rpick=a=>a[Math.floor(Math.random()*a.length)];
+const hx=h=>[parseInt(h.slice(1,3),16),parseInt(h.slice(3,5),16),parseInt(h.slice(5,7),16)];
+const mix=(a,b,t)=>{const A=hx(a),B=hx(b);return '#'+A.map((v,i)=>Math.round(v+(B[i]-v)*t).toString(16).padStart(2,'0')).join('');};
+function ell(g,cx,cy,rx,ry){ for(let y=-ry;y<=ry;y++){ const w=Math.round(rx*Math.sqrt(Math.max(0,1-(y*y)/(ry*ry)))); g.fillRect(Math.round(cx)-w,Math.round(cy)+y,w*2+1,1);} }
+function disc(g,cx,cy,r){ ell(g,cx,cy,r,r); }
+function line(g,x0,y0,x1,y1){ x0=Math.round(x0);y0=Math.round(y0);x1=Math.round(x1);y1=Math.round(y1);
+  const dx=Math.abs(x1-x0),dy=-Math.abs(y1-y0),sx=x0<x1?1:-1,sy=y0<y1?1:-1;let e=dx+dy;
+  for(;;){g.fillRect(x0,y0,1,1);if(x0===x1&&y0===y1)break;const e2=2*e;if(e2>=dy){e+=dy;x0+=sx;}if(e2<=dx){e+=dx;y0+=sy;}}}
+const mk=(w,h)=>{const c=document.createElement('canvas');c.width=w;c.height=h;return c;};
+const inWin=(x,y)=>x>=win.x0&&x<win.x1&&y>=win.y0&&y<win.y1&&!(y<win.y0+win.arch && Math.hypot(x-(win.x0+win.x1)/2,(y-win.y0-win.arch)*(win.x1-win.x0)/(2*win.arch))>(win.x1-win.x0)/2);
+
+/* ---------- ขนาดจอ ---------- */
+function viewSize(){
+  const r=document.querySelector('.fx').getBoundingClientRect();
+  let w=Math.max(r.width,innerWidth), h=Math.max(r.height,innerHeight);
+  if(navigator.standalone){ const a=Math.min(screen.width,screen.height), b=Math.max(screen.width,screen.height);
+    if(w>h){ w=Math.max(w,b); h=Math.max(h,a);} else { w=Math.max(w,a); h=Math.max(h,b);} }
+  return [Math.round(w),Math.round(h)];
+}
+let lastVW=0,lastVH=0,sizeCheck=0;
+function resize(){
+  const [vw,vh]=viewSize(); lastVW=vw; lastVH=vh;
+  const st=document.getElementById('stage'); st.style.width=vw+'px'; st.style.height=vh+'px';
+  portrait=vw/vh<.75;
+  P=Math.max(3,Math.round(vh/(portrait?170:125)));
+  W=Math.ceil(vw/P); H=Math.ceil(vh/P);
+  cvs.width=W; cvs.height=H; cvs.style.width=W*P+'px'; cvs.style.height=H*P+'px';
+  ctx.imageSmoothingEnabled=false;
+  build();
+}
+function checkSize(){ const [w,h]=viewSize(); if(w!==lastVW||h!==lastVH) resize(); }
+
+/* ---------- STEP 1: ผังห้อง ---------- */
+function build(){
+  R=rng(5);
+  gY=Math.round(H*.9);
+  if(portrait) win={x0:Math.round(W*.07), x1:W-Math.round(W*.07), y0:Math.round(H*.55), y1:Math.round(H*.8)};
+  else          win={x0:Math.round(W*.06), x1:Math.round(W*.58), y0:Math.round(H*.1),  y1:Math.round(H*.66)};
+  win.arch=Math.round((win.x1-win.x0)*.22);
+  sill=win.y1+3;
+  seat={x:Math.round(win.x0+(win.x1-win.x0)*(portrait?.3:.36)), y:sill};
+  glass=[]; trails=[]; wxParts=[]; skyC=[]; skyT=[];
+  buildStrips();
+  for(let s=0;s<5;s++) renderSky(s);
+  if(stage===4) islandX=win.x0+(win.x1-win.x0)*.76;
+  buildInterior();
+  buildSouvenirs();
+}
+
+/* ---------- STEP 2: การเดินทางผ่านเมืองต่างๆ นอกหน้าต่าง ----------
+   focus ครบแต่ละรอบ คาเฟ่จะลอยไปเมืองถัดไป: เมืองฝนตก → เมืองนีออน → เมืองซากุระ → หมู่บ้านหิมะ → งานวันเกิด (long break)
+   แต่ละเมืองวาด 2 แบบ: กลางคืน (ตอน focus) กับกลางวันแดดออก (ตอนพัก) แล้วค่อยๆ ผสมกันตาม theme
+   ตึกแต่ละชั้นวาดเป็นแถบยาว 2 เท่าของจอแล้วเลื่อนวน ชั้นไกลเลื่อนช้า ชั้นใกล้เลื่อนเร็ว (parallax)
+   ไฟจากหน้าต่างตึก/ป้ายนีออน/โคมไฟ แยกไว้อีกแถบ ตอนกลางวันจะดับไป */
+const CITIES=[
+  {name:'rain city',     skyN:['#16233f','#1b2b4d','#21345a','#283e66','#2f4870'], skyD:['#4f9de0','#6fb3ea','#99cdf2','#c9e6f8','#fff0cc'], beam:'#ffc65a', wx:'rain'},
+  {name:'neon city',     skyN:['#120a2a','#1f0f3d','#341457','#4f1a6e','#7a2a86'], skyD:['#6f7fe0','#9a8fe0','#d99bd0','#ffb8b0','#ffdcae'], beam:'#ff9fcf', wx:'drizzle'},
+  {name:'sakura town',   skyN:['#2a2a5c','#433874','#6a4885','#9d5c8e','#d9858e'], skyD:['#6aa8e8','#8cc0ee','#b9d8f2','#f4d9c4','#ffe3ad'], beam:'#ffb45c', wx:'petals'},
+  {name:'snow village',  skyN:['#0b1430','#10203f','#16294d','#1c345c','#2c4f7a'], skyD:['#7fb6ea','#9fcaf0','#c3def5','#e4f0fa','#fffaf0'], beam:'#fff1c8', wx:'snow'},
+  {name:'birthday party',skyN:['#4f9de0','#7cbbe9','#b9d4f0','#f8d4c4','#ffd8a0'], skyD:['#4f9de0','#7cbbe9','#b9d4f0','#f8d4c4','#ffd8a0'], beam:'#ffd27a', wx:'confetti'},
+];
+let stage=0, prevStage=0, stageFade=1, travel=0, speed=.25, speedTarget=.25, strips=[], skyC=[], skyT=[], islandX=0, wxParts=[], balloons=[];
+
+function renderSky(s){
+  if(!skyC[s]) skyC[s]=mk(W,H);
+  const g=skyC[s].getContext('2d'), C=CITIES[s], cols=C.skyN.map((c,i)=>mix(c,C.skyD[i],theme)), n=cols.length, top=win.y0-2, bh=(win.y1+4-top)/n;
+  g.clearRect(0,0,W,H);
+  for(let i=0;i<n;i++){ g.fillStyle=cols[i]; g.fillRect(win.x0-6,Math.floor(top+i*bh),win.x1-win.x0+12,Math.ceil(bh)+1); }
+  for(let i=1;i<n;i++){ const y=Math.floor(top+i*bh); g.fillStyle=cols[i-1]; for(let x=win.x0-6;x<win.x1+6;x+=2) g.fillRect(x,y,1,1); }
+  const sunA = s===4 ? 1 : theme;
+  if(sunA>.05){ const sx=win.x0+(win.x1-win.x0)*.2, sy=win.y0+win.arch*.9, sr=Math.max(4,Math.round(H*.04));
+    g.fillStyle=s===1?'#ffe0c8':'#fff6d0'; g.globalAlpha=.18*sunA; disc(g,sx,sy,sr+8); g.globalAlpha=.35*sunA; disc(g,sx,sy,sr+4); g.globalAlpha=sunA; disc(g,sx,sy,sr); g.globalAlpha=1; }
+  if(s===1 && theme<.95){ g.fillStyle='#f6e6ff'; g.globalAlpha=1-theme; const mx=win.x1-(win.x1-win.x0)*.22, my=win.y0+win.arch*.9; disc(g,mx,my,3); g.fillStyle=cols[1]; disc(g,mx+2,my-1,3); g.globalAlpha=1; }
+  if(s===0 && theme>.05){   // รุ้งหลังฝน (อยู่ฝั่งตรงข้ามดวงอาทิตย์)
+    const cx=(win.x0+win.x1)/2+(win.x1-win.x0)*.15, cy=win.y1+(win.y1-win.y0)*.2, r0=(win.x1-win.x0)*.42, RB=['#ff9fb3','#ffc48a','#ffe58a','#a8e6b4','#8fd3ff','#a9a3ff'];
+    g.globalAlpha=.55*theme; for(let i=0;i<RB.length;i++){ g.fillStyle=RB[i]; const r=r0-i*1.5; for(let a=Math.PI*1.05;a<Math.PI*1.95;a+=.6/r) g.fillRect(Math.round(cx+Math.cos(a)*r),Math.round(cy+Math.sin(a)*r),1,2); }
+    g.globalAlpha=1; }
+  if(theme<.6 && s!==4){ g.fillStyle='#ffffff'; R=rng(90+s); for(let i=0;i<(win.x1-win.x0)/5;i++){ g.globalAlpha=(1-theme)*rf(.2,.7); g.fillRect(ri(win.x0,win.x1),ri(win.y0,win.y0+(win.y1-win.y0)*.45),1,1); } g.globalAlpha=1; }
+  skyT[s]=theme;
+}
+
+function buildStrips(){
+  strips=[];
+  const wh=win.y1-win.y0, base=win.y1+3, L=Math.max(W*2,320);
+  for(let s=0;s<5;s++){
+    R=rng(300+s*17);
+    const farN=mk(L,H), farD=mk(L,H), midN=mk(L,H), midD=mk(L,H), lights=mk(L,H);
+    const fN=farN.getContext('2d'), fD=farD.getContext('2d'), mN=midN.getContext('2d'), mD=midD.getContext('2d'), lt=lights.getContext('2d');
+    const both=(fn,x,w)=>{ fn(x); if(x+w>L) fn(x-L); if(x<0) fn(x+L); };
+    const glowPx=(x,y,c,r)=>both(xx=>{ lt.fillStyle=c; lt.globalAlpha=.22; lt.fillRect(xx-r,y-r,2*r+1,2*r+1); lt.globalAlpha=1; lt.fillRect(xx,y,1,1); },x,1);
+    const rect=(gN,gD,cN,cD,x,y,w,h)=>both(xx=>{ gN.fillStyle=cN; gN.fillRect(xx,y,w,h); gD.fillStyle=cD; gD.fillRect(xx,y,w,h); },x,w);
+    if(s===0){       // เมืองฝนตก: ตึกฟ้าๆ ไฟหน้าต่าง + ไฟเมืองเบลอเป็นวง
+      for(let x=0;x<L;){ const w=ri(8,16), h=ri(Math.round(wh*.45),Math.round(wh*.75)); rect(fN,fD,'#1a2a4a','#a9c6e6',x,base-h,w,h); x+=w+ri(0,3); }
+      for(let x=0;x<L;){ const w=ri(6,14), h=ri(Math.round(wh*.25),Math.round(wh*.6)), top=base-h;
+        rect(mN,mD,'#1e2f52','#8fb3d9',x,top,w,h);
+        for(let wy=top+2;wy<base;wy+=3) for(let wx=x+1;wx<x+w-1;wx+=2){ rect(mN,mD,'#2a3f68','#b9d3ec',wx,wy,1,1); if(R()<.35) glowPx(wx,wy,R()<.6?'#ffd98a':'#a8e0ff',0); }
+        x+=w+ri(0,2); }
+      for(let i=0;i<L*.35;i++){ const x=rf(0,L), y=rf(win.y0+wh*.35,base), r=ri(1,4), c=pick(['#7cc6f2','#4f9de0','#a8e0ff','#ffffff','#ffd98a','#ff9fc4','#9fb4ff']);
+        both(xx=>{ lt.fillStyle=c; lt.globalAlpha=.16; disc(lt,xx,y,r+1); lt.globalAlpha=.22; disc(lt,xx,y,r); lt.globalAlpha=1; },x-r,2*r); }
+    }
+    if(s===1){       // เมืองนีออน cyberpunk
+      for(let x=0;x<L;){ const w=ri(8,14), h=ri(Math.round(wh*.55),Math.round(wh*.92)); rect(fN,fD,'#2a1650','#b9a6d9',x,base-h,w,h);
+        if(R()<.4){ rect(fN,fD,'#2a1650','#b9a6d9',x+Math.floor(w/2),base-h-ri(4,8),1,8); glowPx(x+Math.floor(w/2),base-h-8,'#ff4f6d',1); }
+        for(let wy=base-h+3;wy<base;wy+=4) for(let wx=x+2;wx<x+w-1;wx+=3) if(R()<.25) glowPx(wx,wy,'#7a5cff',0);
+        x+=w+ri(0,2); }
+      for(let x=0;x<L;){ const w=ri(7,15), h=ri(Math.round(wh*.3),Math.round(wh*.7)), top=base-h;
+        rect(mN,mD,'#140b26','#7d6fa8',x,top,w,h); rect(mN,mD,'#2a1a4a','#9a8cc4',x,top,w,1);
+        for(let wy=top+2;wy<base;wy+=3) for(let wx=x+1;wx<x+w-1;wx+=2){ if(R()<.3) glowPx(wx,wy,R()<.5?'#3ff0ff':'#ff3fd8',0); else rect(mN,mD,'#241640','#a99bd0',wx,wy,1,1); }
+        if(R()<.7){ const vert=R()<.6, c=pick(['#ff3fd8','#3ff0ff','#ffe14d','#b56cff']), sw=vert?2:Math.min(w-2,ri(5,9)), sh=vert?ri(6,12):3, sx=vert?(R()<.5?x-1:x+w-1):x+1, sy=top+ri(2,Math.max(2,Math.floor(h*.4)));
+          rect(mN,mD,'#0b0620',mix(c,'#7d6fa8',.6),sx,sy,sw,sh);
+          for(let yy=sy;yy<sy+sh;yy++) for(let xx=sx;xx<sx+sw;xx++) if(R()<.75) glowPx(xx,yy,c,1); }
+        x+=w+ri(0,2); }
+    }
+    if(s===2){       // เมืองซากุระ: ภูเขา เจดีย์ บ้านไม้ โคมแดง ต้นซากุระ
+      for(let x=0;x<L;x++){ const k=2*Math.PI*x/L, h=Math.round(wh*(.38+.08*Math.sin(k*3)+.05*Math.sin(k*7+1))); rect(fN,fD,'#3a2f5c','#a6b8d8',x,base-h,1,h); }
+      const px=rf(0,L-20); let py=base-Math.round(wh*.4);
+      for(let i=0;i<5;i++){ const w=11-2*i; rect(fN,fD,'#2c2448','#8a9cc4',px-Math.floor((w-4)/2),py-3,w-4,3); rect(fN,fD,'#2c2448','#8a9cc4',px-Math.floor(w/2),py-4,w,1); py-=4; }
+      rect(fN,fD,'#2c2448','#8a9cc4',px,py-4,1,4);
+      for(let x=0;x<L;){
+        if(R()<.3){ const cx=x+6, cy=base-Math.round(wh*.32); for(let k=0;k<6;k++){ const bx=cx+ri(-5,5), by=cy+ri(-3,3), r=ri(2,4);
+            both(xx=>{ mN.fillStyle='#a0628a'; disc(mN,xx,by,r); mD.fillStyle='#f4a6bf'; disc(mD,xx,by,r); },bx-r,2*r); }
+          rect(mN,mD,'#3a2420','#7a5238',cx,cy+2,2,base-cy-2); x+=13; continue; }
+        const w=ri(12,20), wallH=ri(6,10), top=base-wallH;
+        rect(mN,mD,'#3a2420','#c9a27f',x,top,w,wallH);
+        for(let r=0;r<4;r++) rect(mN,mD,'#2c283f','#5b5f7e',x-2+r,top-1-r,w+4-2*r,1);
+        const dx=x+ri(2,Math.max(2,w-7)); glowPx(dx,top+2,'#ffcf7a',0); glowPx(dx+1,top+2,'#ffcf7a',0); glowPx(dx,top+3,'#ffcf7a',0); glowPx(dx+1,top+3,'#ffcf7a',0);
+        if(R()<.7){ const lx=x+ri(1,w-3); rect(mN,mD,'#d64030','#e86a5a',lx,top+1,2,3); glowPx(lx,top+2,'#ff7a4a',2); }
+        x+=w+ri(2,5); }
+    }
+    if(s===3){       // หมู่บ้านหิมะ: ภูเขาหิมะ ต้นสน กระท่อมไฟอุ่น
+      for(let i=0;i<7;i++){ const px=rf(0,L), h=ri(Math.round(wh*.3),Math.round(wh*.55)), w=h*1.3;
+        for(let y=0;y<=h;y++){ const half=Math.round(w*y/h); rect(fN,fD,y<h*.3?'#dde8f5':'#2b4466',y<h*.3?'#ffffff':'#9fbbe0',Math.round(px-half),base-h+y-4,half*2+1,1); } }
+      for(let x=0;x<L;){
+        if(R()<.45){ const h=ri(8,14); for(let y=0;y<h;y++){ const w=Math.floor(y*.45); rect(mN,mD,y%4===1?'#c9d8ea':'#16283c',y%4===1?'#ffffff':'#3f6a5a',x-w,base-h+y,w*2+1,1); } x+=ri(4,7); continue; }
+        const w=ri(10,16), wallH=ri(6,9), top=base-wallH;
+        rect(mN,mD,'#4a3326','#8a5f40',x,top,w,wallH);
+        for(let r=0;r<4;r++) rect(mN,mD,'#dde8f5','#ffffff',x-2+r,top-1-r,w+4-2*r,1);
+        rect(mN,mD,'#3a3a46','#8a8a96',x+w-4,top-6,2,3);
+        const wx=x+ri(2,Math.max(2,w-5)); for(let yy=0;yy<2;yy++) for(let xx=0;xx<2;xx++) glowPx(wx+xx,top+2+yy,'#ffc46b',xx+yy===0?2:0);
+        x+=w+ri(3,6); }
+    }
+    if(s===4){       // เหนือเมฆ: ทะเลเมฆสีชมพูทอง
+      for(let x=0;x<L;x+=6){ const y=base-Math.round(wh*.22)+Math.round(3*Math.sin(x*.3)); both(xx=>{ fN.fillStyle='#f6dfe6'; disc(fN,xx,y,5); fD.fillStyle='#f6dfe6'; disc(fD,xx,y,5); },x-5,10); }
+      rect(fN,fD,'#f6dfe6','#f6dfe6',0,base-Math.round(wh*.22)+3,L,H);
+      for(let x=0;x<L;x+=7){ const y=base-Math.round(wh*.12)+Math.round(2*Math.sin(x*.25)); both(xx=>{ mN.fillStyle='#ffffff'; disc(mN,xx,y,5); mD.fillStyle='#ffffff'; disc(mD,xx,y,5); },x-5,10); }
+      rect(mN,mD,'#ffffff','#ffffff',0,base-Math.round(wh*.12)+3,L,H);
+    }
+    strips.push({L,farN,farD,midN,midD,lights});
+  }
+}
+/* แสงเหนือ (ยกมาจาก Snow Nook): วาดทีละคอลัมน์ ตำแหน่งแถบขึ้นลงตามคลื่น sin หลายลูก
+   สีไล่จากเขียวไปม่วง บวกแสงแบบ 'lighter' วาดเฉพาะช่วงหน้าต่าง ครึ่งบนของกระจก */
+function drawAurora(a){
+  if(a<.02) return;
+  const t=time, wh=win.y1-win.y0, top=win.y0;
+  ctx.globalCompositeOperation='lighter';
+  for(let band=0;band<2;band++){
+    for(let x=win.x0;x<win.x1;x++){
+      const yc=top+wh*(.42+band*.1)+Math.sin(x*.06+t*.25+band*2)*wh*.07+Math.sin(x*.13-t*.18)*wh*.035;
+      const hgt=wh*(.2+band*.05)*(.6+.4*Math.sin(x*.09+t*.4+band));
+      const shimmer=.55+.45*Math.sin(x*.35+t*1.6+band*3);
+      for(let k=0;k<5;k++){
+        const yy=Math.round(yc-hgt*(k+1)/5), h=Math.ceil(hgt/5);
+        ctx.globalAlpha=a*.3*(1-k/5)*shimmer*(band?.75:1);
+        ctx.fillStyle = k<2 ? '#5cf2b0' : k<4 ? '#4fd6c9' : '#9a7cf2';
+        ctx.fillRect(x,yy,1,h);
+      }
+    }
+  }
+  ctx.globalAlpha=1; ctx.globalCompositeOperation='source-over';
+}
+function drawCity(s,alpha){
+  if(alpha<=0) return;
+  ctx.globalAlpha=alpha; ctx.drawImage(skyC[s],0,0);
+  if(s===3) drawAurora(alpha*(1-theme));   // หมู่บ้านหิมะตอนกลางคืนมีแสงเหนือ
+  const st=strips[s];
+  for(const [n,d,f] of [[st.farN,st.farD,.15],[st.midN,st.midD,.45]]){
+    const off=Math.round(-((travel*f)%st.L));
+    ctx.globalAlpha=alpha; ctx.drawImage(n,off,0); ctx.drawImage(n,off+st.L,0);
+    if(theme>0){ ctx.globalAlpha=alpha*theme; ctx.drawImage(d,off,0); ctx.drawImage(d,off+st.L,0); }
+  }
+  if(theme<1){ const off=Math.round(-((travel*.45)%st.L)); ctx.globalCompositeOperation='lighter'; ctx.globalAlpha=alpha*(1-theme)*(s===1?.85+.15*Math.sin(time*7)*Math.sin(time*3):.9);
+    ctx.drawImage(st.lights,off,0); ctx.drawImage(st.lights,off+st.L,0); ctx.globalCompositeOperation='source-over'; }
+  if(s===4) drawIsland(islandX);
+  ctx.globalAlpha=1;
+}
+function setStage(s){ if(s===stage) return; prevStage=stage; stage=s; stageFade=0; wxParts=[]; if(s===4){ islandX=win.x1+50; } }
+
+/* เกาะงานวันเกิด (ปลายทาง) */
+function drawIsland(ix){
+  const w=Math.min(34,Math.round((win.x1-win.x0)*.3)), top=win.y1-Math.round((win.y1-win.y0)*.3);
+  for(let y=0;y<12;y++){ const hw=Math.round(w*(1-y/12)); ctx.fillStyle=y<2?'#7cc67f':'#8a6a52'; ctx.fillRect(Math.round(ix-hw),top+y,hw*2+1,1); }
+  ctx.fillStyle='#5aa469'; ctx.fillRect(Math.round(ix-w),top,w*2+1,2);
+  const tx=Math.round(ix-6); for(let r=0;r<8;r++){ const hw=r; for(let x=-hw;x<=hw;x++){ ctx.fillStyle=(Math.floor((x+20)/2)&1)?'#ffffff':'#7cc6f2'; ctx.fillRect(tx+x,top-8+r,1,1);} }
+  ctx.fillStyle='#ff9fc4'; ctx.fillRect(tx,top-11,1,3); ctx.fillRect(tx+1,top-11,2,1);
+  const kx=Math.round(ix+9); ctx.fillStyle='#ffe9b8'; ctx.fillRect(kx-4,top-5,9,4); ctx.fillStyle='#7cc6f2'; ctx.fillRect(kx-4,top-6,9,1); ctx.fillRect(kx-2,top-8,5,2);
+  ctx.fillStyle='#ffffff'; ctx.fillRect(kx,top-11,1,3); ctx.fillStyle=Math.sin(time*12)>0?'#ffd166':'#ff9f43'; ctx.fillRect(kx,top-12,1,1);
+  const cols=['#7cc6f2','#ff9fc4','#ffd166','#a8e6b4'];
+  for(let i=0;i<4;i++){ const bx=Math.round(ix-w+5+i*(w*2-10)/3), by=top-20+Math.round(Math.sin(time*1.5+i)*2)-(i%2)*3; ctx.fillStyle='#ffffff'; ctx.fillRect(bx,by+3,1,top-by-3); ctx.fillStyle=cols[i]; ell(ctx,bx,by,2,3); }
+}
+
+/* อากาศของแต่ละเมือง: ฝน / ฝนปรอยนีออน / กลีบซากุระ / หิมะ / พลุกระดาษกับลูกโป่ง */
+function weatherLevel(){ const wx=CITIES[stage].wx; return wx==='rain' ? 1-theme : wx==='drizzle' ? (1-theme)*.45 : 0; }
+function drawWeather(dt){
+  const wx=CITIES[stage].wx, ww=win.x1-win.x0, wh=win.y1-win.y0;
+  const want = wx==='rain'||wx==='drizzle' ? Math.round(ww*wh/30) : wx==='petals' ? Math.round(ww*wh/220) : wx==='snow' ? Math.round(ww*wh/(theme>.5?600:90)) : Math.round(ww*wh/160);
+  while(wxParts.length<want) wxParts.push({x:rnd(win.x0-10,win.x1+10), y:rnd(win.y0-20,win.y1), v:rnd(.8,1.2), p:Math.random()*6, c:rpick(['#7cc6f2','#ff9fc4','#ffd166','#a8e6b4','#c3a6ff','#ffffff'])});
+  if(wxParts.length>want) wxParts.length=want;
+  const drift = speed*14;
+  for(const q of wxParts){
+    if(wx==='rain'||wx==='drizzle'){ q.y+=95*q.v*dt; q.x-=(16+drift)*dt; const a=weatherLevel()/(wx==='drizzle'?.45:1); if(a<.02) continue;
+      ctx.fillStyle=wx==='drizzle'?(q.p<3?'#d6a8ff':'#a8f0ff'):'#a8c8e8'; ctx.globalAlpha=.45*a; for(let k=0;k<3;k++) ctx.fillRect(Math.round(q.x+k*.18),Math.round(q.y-k),1,1); }
+    else if(wx==='petals'){ q.y+=10*q.v*dt; q.x-=(8+drift*1.3)*dt; ctx.fillStyle=q.p<2?'#fff0f4':'#ffb7c9'; ctx.globalAlpha=.9; const f=Math.sin(time*3+q.p)>0; ctx.fillRect(Math.round(q.x+Math.sin(time+q.p)*2),Math.round(q.y),f?2:1,1); }
+    else if(wx==='snow'){ q.y+=12*q.v*dt; q.x-=(2+drift)*dt; ctx.fillStyle='#ffffff'; ctx.globalAlpha=.9; ctx.fillRect(Math.round(q.x+Math.sin(time*q.v+q.p)*2),Math.round(q.y),1,1); }
+    else { q.y+=14*q.v*dt; q.x+=Math.sin(time*2+q.p)*6*dt; ctx.fillStyle=q.c; ctx.globalAlpha=.95; const f=Math.sin(time*8+q.p)>0; ctx.fillRect(Math.round(q.x),Math.round(q.y),f?2:1,f?1:2); }
+    if(q.y>win.y1+2||q.x<win.x0-12){ q.y=win.y0-rnd(2,20); q.x=rnd(win.x0,win.x1+12); }
+  }
+  ctx.globalAlpha=1;
+  if(wx==='confetti'){
+    if(Math.random()<dt*.8) balloons.push({x:rnd(win.x0+4,win.x1-4), y:win.y1+8, c:rpick(['#7cc6f2','#ff9fc4','#ffd166','#a8e6b4']), p:Math.random()*6});
+    for(const b of balloons){ b.y-=10*dt; const x=Math.round(b.x+Math.sin(time+b.p)*2); ctx.fillStyle='#ffffff'; ctx.fillRect(x,Math.round(b.y)+3,1,4); ctx.fillStyle=b.c; ell(ctx,x,Math.round(b.y),2,3); ctx.fillStyle='#ffffff'; ctx.fillRect(x-1,Math.round(b.y)-2,1,1); }
+    balloons=balloons.filter(b=>b.y>win.y0-10);
+  } else balloons.length=0;
+}
+
+/* ---------- STEP 3: ในคาเฟ่ (วาดครั้งเดียว ช่องกระจกเว้นใส) ---------- */
+function buildInterior(){
+  shadeMask=mk(W,H); { const m=shadeMask.getContext('2d'); m.fillStyle='#2f4370'; m.fillRect(0,0,W,H); for(let y=win.y0;y<win.y1;y++) for(let x=win.x0;x<win.x1;x++) if(inWin(x,y)) m.clearRect(x,y,1,1); }
+  interior=mk(W,H); const g=interior.getContext('2d'); R=rng(17);
+  // ผนังวอลเปเปอร์สีฟ้าลายจุดฝน
+  g.fillStyle='#cfe3f3'; g.fillRect(0,0,W,gY);
+  g.fillStyle='#bcd6ec'; for(let y=3;y<gY;y+=7) for(let x=(y*3)%9;x<W;x+=9){ g.fillRect(x,y,1,2); }
+  g.fillStyle='#ffffff'; for(let y=6;y<gY;y+=14) for(let x=(y*5)%18+4;x<W;x+=18) g.fillRect(x,y,1,1);
+  // ผนังกระเบื้องด้านล่าง (ฟ้า-ขาว)
+  const tileTop = sill+5;
+  for(let y=tileTop;y<gY;y+=4) for(let x=((y-tileTop)/4%2)*2;x<W;x+=4){ g.fillStyle=((x+y)>>2)%2?'#e8f2fa':'#7cb8e6'; g.fillRect(x,y,4,4); g.fillStyle='#5f9fd6'; g.fillRect(x,y,4,1); }
+  g.fillStyle='#ffffff'; g.fillRect(0,tileTop-1,W,1);
+  // พื้นไม้
+  for(let y=gY,row=0;y<H;y+=3,row++){ g.fillStyle=row%2?'#6e4a36':'#7a523c'; g.fillRect(0,y,W,3); g.fillStyle='#5a3a2a'; for(let x=(row*7)%15;x<W;x+=15) g.fillRect(x,y,1,3); }
+  g.fillStyle='#4a3022'; g.fillRect(0,gY,W,1);
+  // หน้าต่างโค้ง: กรอบไม้ แล้วเว้นช่องใส
+  const {x0,x1,y0,y1,arch}=win, cxw=(x0+x1)/2;
+  g.fillStyle='#8a5a3e';
+  for(let y=y0-4;y<y1+3;y++) for(let x=x0-4;x<x1+4;x++){ if(y<y0+arch){ const ry=(y-(y0+arch))*(x1-x0+8)/(2*(arch+4)); if(Math.hypot(x-cxw,ry)>(x1-x0+8)/2) continue; } g.fillRect(x,y,1,1); }
+  for(let y=y0;y<y1;y++) for(let x=x0;x<x1;x++) if(inWin(x,y)) g.clearRect(x,y,1,1);
+  g.fillStyle='#8a5a3e'; const mx=Math.round(cxw); g.fillRect(mx-1,y0,2,y1-y0);                 // เสากลาง
+  const ty=Math.round(y0+arch+(y1-y0-arch)*.35); for(let x=x0;x<x1;x++) if(inWin(x,ty)) g.fillRect(x,ty,1,1);
+  g.fillStyle='#a8744e'; for(let x=x0-4;x<x1+4;x++){ }
+  // ขอบหน้าต่างกว้าง (ที่นั่งของหนู) + เบาะ
+  g.fillStyle='#c99a6a'; g.fillRect(x0-7,sill-1,x1-x0+14,3); g.fillStyle='#a8744e'; g.fillRect(x0-7,sill+2,x1-x0+14,2); g.fillStyle='#e0b88a'; g.fillRect(x0-7,sill-1,x1-x0+14,1);
+  const cw=26; g.fillStyle='#4f9de0'; g.fillRect(seat.x-4,sill-3,cw,3); g.fillRect(seat.x-3,sill-4,cw-2,1);
+  g.fillStyle='#7cc6f2'; for(let x=seat.x-3;x<seat.x+cw-5;x+=3) g.fillRect(x,sill-3,1,1);
+  // ต้นไม้ในกระถาง + หนังสือซ้อนบนขอบหน้าต่าง
+  const px=x1-9;
+  g.fillStyle='#e8d5b5'; g.fillRect(px,sill-6,6,5); g.fillStyle='#c9b08a'; g.fillRect(px,sill-2,6,1);
+  g.fillStyle='#4f9e6b'; ell(g,px+3,sill-10,4,4); g.fillStyle='#6fbf85'; ell(g,px+2,sill-12,2,2); g.fillRect(px+5,sill-9,2,1);
+  const bx=x0+2;
+  g.fillStyle='#4f9de0'; g.fillRect(bx,sill-3,9,2); g.fillStyle='#f6f4ee'; g.fillRect(bx+1,sill-5,8,2); g.fillStyle='#ff9fc4'; g.fillRect(bx,sill-7,9,2); g.fillStyle='#ffffff'; g.fillRect(bx+8,sill-7,1,2);
+  // ฝั่งขวา: เคาน์เตอร์ ชั้นวางของ เมนูกระดาน
+  const rx=portrait?null:win.x1+8;
+  counterC=null; armorP=null;
+  if(rx && rx<W-10){
+    const ct=gY-18;
+    // เคาน์เตอร์แยกเป็นอีกชั้น เพื่อให้ชุดเกราะยืนอยู่ "หลังเคาน์เตอร์" ได้
+    counterC=mk(W,H); const gc=counterC.getContext('2d');
+    gc.fillStyle='#8a5a3e'; gc.fillRect(rx,ct,W-rx,gY-ct); gc.fillStyle='#e8e2d6'; gc.fillRect(rx-1,ct-2,W-rx+1,2);
+    gc.fillStyle='#6e4530'; for(let x=rx+4;x<W;x+=8) gc.fillRect(x,ct+3,1,gY-ct-5);
+    const mx=rx+23;   // เครื่องชงกาแฟ + แก้ว (ขยับไปทางขวา เว้นที่ให้ชุดเกราะ)
+    gc.fillStyle='#c7d3de'; gc.fillRect(mx,ct-12,9,10); gc.fillStyle='#9fb0c0'; gc.fillRect(mx,ct-12,9,2); gc.fillStyle='#3a4656'; gc.fillRect(mx+3,ct-7,3,2); gc.fillStyle='#ffffff'; gc.fillRect(mx+3,ct-4,3,2);
+    gc.fillStyle='#ffffff'; gc.fillRect(rx+2,ct-4,3,3); gc.fillStyle='#4f9de0'; gc.fillRect(rx+2,ct-3,3,1);
+    // ตำแหน่งชุดเกราะ: ระหว่างแก้วกาแฟกับหน้าปัดนาฬิกา
+    armorP={x:rx+13,y:ct+3}; katP={x:rx-9,y:gY+1};
+    // กรอบรูปหนูบนผนัง
+    const fx=Math.round((rx+W)/2)-6, fy=Math.round(H*.18); g.fillStyle='#8a5a3e'; g.fillRect(fx-1,fy-1,14,12); g.fillStyle='#e8f2fa'; g.fillRect(fx,fy,12,10); g.fillStyle='#f7a8c8'; ell(g,fx+6,fy+6,3,2); disc(g,fx+3,fy+3,1); disc(g,fx+9,fy+3,1);
+  }
+  if(portrait){ armorP={x:W-14,y:H-3}; katP={x:11,y:H-3}; }   // มือถือ: ยืนบนพื้นข้างหน้าต่าง
+  // ขอบกระจกสำหรับหน้าต่างอัจฉริยะ เรียงตามมุมรอบจุดกลาง จะได้วิ่งแสงวนรอบได้
+  hudEdge=[]; { const cx=(x0+x1)/2, cy=(y0+y1)/2;
+    for(let y=y0;y<y1;y++) for(let x=x0;x<x1;x++) if(inWin(x,y) && (!inWin(x-1,y)||!inWin(x+1,y)||!inWin(x,y-1)||!inWin(x,y+1))) hudEdge.push([x,y,Math.atan2(y-cy,x-cx)]);
+    hudEdge.sort((a,b)=>a[2]-b[2]); }
+  // กระดานดำเล็กเหนือหน้าต่าง: รูปเค้กวันเกิดวาดด้วยชอล์ก
+  const kx=Math.round(cxw)-9, ky=Math.max(2,y0-17);
+  if(!portrait && ky>2){
+    g.fillStyle='#8a5a3e'; g.fillRect(kx-1,ky-1,20,12); g.fillStyle='#2f3b3a'; g.fillRect(kx,ky,18,10);
+    g.fillStyle='#f6f4ee'; g.fillRect(kx+5,ky+5,8,3); g.fillRect(kx+6,ky+4,6,1); g.fillStyle='#ff9fc4'; g.fillRect(kx+5,ky+6,8,1);
+    g.fillStyle='#ffd98a'; g.fillRect(kx+9,ky+2,1,2); g.fillStyle='#7cc6f2'; g.fillRect(kx+2,ky+2,1,1); g.fillRect(kx+15,ky+3,1,1); g.fillRect(kx+3,ky+7,1,1); g.fillRect(kx+14,ky+7,1,1);
+  }
+}
+
+/* ---------- STEP 4: หนูชมพูตัวกลม ---------- */
+const MOUSE=[
+  "............OOOOO.....",
+  "...OOOOO...OFFFFFO....",
+  "..OSSSSSO.OFFFEEFFO...",
+  ".OSSSESSO.OFFEEEEFFO..",
+  ".OSSEEESSOFFEEEEEFFO..",
+  ".OSEEEESSOFFEEEEEFFO..",
+  ".OSSEEEFFFFFFEEEEFO...",
+  ".OSSSFFFFFFFFFFFFO....",
+  "..OOSFFFFFFFFFFFO.....",
+  "...OFFFFFFFFFFFFFO....",
+  "...OFFFFFFFFFFFFFNN...",
+  "...OFFFFFFFFBBFFFFO...",
+  "....OFFFFFFFFFFFOO....",
+  "....OFFFFLLLLFFFO.....",
+  "...OFFFFLLLLLPPO......",
+  "...OFFFFLLLLLLFO......",
+  "...OFFFFLLLLLLFO......",
+  "....OFFFLLLLLFO.......",
+  ".....OFFFLLLLO........",
+  "......PPPFFFO........."
+];
+const MPAL={O:'#7a3b5c',F:'#f7a8c8',S:'#e07aa8',E:'#ffe6f0',L:'#ffd6e6',N:'#e0457a',B:'#ff8fb3',P:'#ffc2d6',K:'#2a1830',W:'#ffffff'};
+// ตา: open = ตาโต 2×2 มีประกาย / down = มองลง (อ่านหนังสือ) / shut = หลับ / happy = ยิ้มตาปิด ^^
+const EYES={
+  open:[[11,8,'K'],[12,8,'W'],[11,9,'K'],[12,9,'K'],[14,8,'K'],[15,8,'W'],[14,9,'K'],[15,9,'K']],
+  down:[[11,9,'K'],[12,9,'K'],[14,9,'K'],[15,9,'K'],[11,10,'K'],[14,10,'K']],
+  shut:[[11,9,'K'],[12,9,'K'],[14,9,'K'],[15,9,'K']],
+  happy:[[11,9,'K'],[12,8,'K'],[13,9,'K'],[14,9,'K'],[15,8,'K'],[16,9,'K']]
+};
+const sprites={};
+function mouseSprite(eyes,earUp){
+  const key=eyes+(earUp?'^':''); if(sprites[key]) return sprites[key];
+  const c=mk(22,21), g=c.getContext('2d');
+  MOUSE.forEach((row,y)=>[...row].forEach((ch,x)=>{ if(ch==='.') return; const dy=(earUp && x>=10 && y<=6)?0:1; g.fillStyle=MPAL[ch]; g.fillRect(x,y+dy,1,1); }));
+  for(const [x,y,c] of EYES[eyes]){ g.fillStyle=MPAL[c]; g.fillRect(x,y+1,1,1); }
+  return sprites[key]=c;
+}
+
+let mouse={blink:2, ear:0, page:-1, sip:0, act:'idle', breakAct:'sip', t:0};
+function drawTail(x,y){ ctx.fillStyle='#f09ab8'; for(let i=0;i<15;i++){ const k=i/15; ctx.fillRect(Math.round(x-i*.9), Math.round(y-Math.sin(k*3+time*1.6)*2*k + k*k*2),1,1); } }
+function focusProgress(){ return mode==='focus' ? 1-remaining/total : 0; }
+function updateMouse(dt){
+  let a = mode==='focus' ? (running ? (done%2?'knit':'read') : 'idle') : (running ? (mouse.t<4 ? 'stretch' : mouse.breakAct) : 'idle');
+  if(mode!=='focus' && running && mouse.t>70){ mouse.breakAct = mouse.breakAct==='sip'?'nap':'sip'; mouse.t=4; }
+  if(a!==mouse.act){ mouse.act=a; if(a==='stretch') Sound.yawn(); }
+  if(mode!=='focus' && running) mouse.t+=dt; else mouse.t=0;
+  mouse.blink-=dt; if(mouse.blink<-.13) mouse.blink=rnd(2.5,5.5);
+  mouse.ear-=dt; if(mouse.ear<-.25 && Math.random()<dt/4) mouse.ear=.22;
+  if(a==='read'){ if(mouse.page<0 && Math.random()<dt/14){ mouse.page=0; Sound.pageTurn(); } if(mouse.page>=0){ mouse.page+=dt; if(mouse.page>.7) mouse.page=-1; } }
+  if((a==='read'||a==='knit'||a==='idle') && mouse.sip<=0 && Math.random()<dt/40) mouse.sip=3;
+  if(mouse.sip>0) mouse.sip-=dt;
+}
+function drawMouse(){
+  const a=mouse.act, x=seat.x, sitY=seat.y-3, y=sitY-21, blink=mouse.blink<0, ear=mouse.ear>0;
+  const sipping = mouse.sip>0 && a!=='nap' && a!=='stretch';
+  let eyes = blink?'shut':'open';
+  if(a==='read' && !sipping) eyes = blink?'shut':'down';
+  if(a==='knit' && !sipping) eyes = blink?'shut':'down';
+  if(a==='nap') eyes='shut';
+  if(a==='stretch') eyes='happy';
+  const bob = a==='nap' ? (Math.sin(time*1.5)>0?1:0) : 0;
+  drawTail(x+4,sitY-2);
+  // แขนชูขึ้นตอนบิดขี้เกียจ
+  if(a==='stretch'){ const up=Math.min(1,mouse.t/1.2)*(mouse.t<3.2?1:Math.max(0,(4-mouse.t)/.8)); const ay=Math.round(y+10-up*9);
+    ctx.fillStyle=MPAL.F; ctx.fillRect(x+5,ay,2,y+12-ay); ctx.fillRect(x+16,ay,2,y+12-ay); ctx.fillStyle=MPAL.P; ctx.fillRect(x+5,ay-1,2,2); ctx.fillRect(x+16,ay-1,2,2); }
+  ctx.drawImage(mouseSprite(eyes,ear),x,y+bob);
+  if(a==='stretch'){ ctx.fillStyle=MPAL.O; ctx.fillRect(x+16,y+13,2,2); }                 // หาว
+  if(mode==='long'){ const hb=y+bob; for(let r=0;r<5;r++){ ctx.fillStyle=r%2?'#7cc6f2':'#ff9fc4'; ctx.fillRect(x+10-Math.floor(r/2),hb+3+r,1+2*Math.floor(r/2),1); } ctx.fillStyle='#ffd166'; ctx.fillRect(x+10,hb+2,1,1); }
+  // ของในมือ
+  if(sipping){ mug(x+12,y+13+(mouse.sip<2.4?-3:0)); ctx.fillStyle=MPAL.P; ctx.fillRect(x+11,y+14,1,2); }
+  else if(a==='read'){
+    ctx.fillStyle='#4f9de0'; ctx.fillRect(x+8,y+17,9,1);
+    ctx.fillStyle='#fffaf0'; ctx.fillRect(x+8,y+13,4,4); ctx.fillRect(x+13,y+13,4,4); ctx.fillStyle='#d9cdb2'; ctx.fillRect(x+12,y+13,1,4);
+    ctx.fillStyle='#b9b0a0'; ctx.fillRect(x+9,y+14,2,1); ctx.fillRect(x+9,y+15,1,1); ctx.fillRect(x+14,y+14,2,1); ctx.fillRect(x+14,y+15,2,1);
+    ctx.fillStyle=MPAL.P; ctx.fillRect(x+7,y+15,1,2); ctx.fillRect(x+17,y+15,1,2);
+    if(mouse.page>=0){ const p=mouse.page/.7, px=x+16-Math.round(p*8), lift=Math.round(Math.sin(p*Math.PI)*2); ctx.fillStyle='#ffffff'; ctx.fillRect(Math.min(px,x+12),y+13-lift,Math.abs(px-(x+12))+1,1); }
+  } else if(a==='knit'){
+    // ถักผ้าพันคอสีฟ้า ยาวขึ้นตามเวลาที่ focus
+    const len=1+Math.floor(focusProgress()*8), sw=Math.sin(time*6);
+    for(let i=0;i<len;i++){ ctx.fillStyle=i%2?'#7cc6f2':'#4f9de0'; ctx.fillRect(x+10,y+15+i,5,1); }
+    ctx.fillStyle='#f6f4ee'; ctx.fillRect(x+10,y+15+len,1,1); ctx.fillRect(x+12,y+15+len,1,1); ctx.fillRect(x+14,y+15+len,1,1);
+    ctx.fillStyle='#c99a6a'; line(ctx,x+8,y+11+Math.round(sw),x+13,y+16); line(ctx,x+17,y+11-Math.round(sw),x+12,y+16);
+    ctx.fillStyle=MPAL.P; ctx.fillRect(x+8,y+13,2,2); ctx.fillRect(x+15,y+13,2,2);
+    ctx.fillStyle='#4f9de0'; disc(ctx,x+22,sitY-2,2); ctx.fillStyle='#7cc6f2'; ctx.fillRect(x+21,sitY-3,1,1);
+    ctx.fillStyle='#4f9de0'; line(ctx,x+20,sitY-2,x+14,y+16);
+  } else if(a==='idle'){
+    mug(x+24,sitY-4,true);
+  }
+  if(a==='nap'){ for(let k=0;k<3;k++){ const ph=(time*.5+k/3)%1, zx=x+16+Math.round(ph*6)+k, zy=y+2-Math.round(ph*12); ctx.globalAlpha=1-ph; ctx.fillStyle='#ffffff'; const s=k===2?3:2;
+      ctx.fillRect(zx,zy,s,1); ctx.fillRect(zx+s-1,zy+1,1,1); if(s===3) ctx.fillRect(zx+1,zy+1,1,1); ctx.fillRect(zx,zy+s-1,s,1); } ctx.globalAlpha=1; mug(x+24,sitY-4,true); }
+  if(a==='read'||a==='knit') if(!sipping) mug(x+24,sitY-4,true);
+}
+function mug(x,y,onSill){
+  ctx.fillStyle='#4f9de0'; ctx.fillRect(x,y,4,4); ctx.fillRect(x+4,y+1,1,2); ctx.fillStyle='#fff3e6'; ctx.fillRect(x,y,4,1); ctx.fillStyle='#a8e0ff'; ctx.fillRect(x+1,y+2,1,1);
+  for(let k=0;k<3;k++){ const ph=(time*.7+k/3)%1; ctx.globalAlpha=.55*(1-ph); ctx.fillStyle='#ffffff'; ctx.fillRect(x+1+Math.round(Math.sin(ph*6+k)),y-1-Math.round(ph*6),1,1); }
+  ctx.globalAlpha=1;
+}
+
+/* ---------- STEP 5: ฝน ----------
+   1) เส้นฝนตกเฉียงข้างนอก  2) หยดน้ำเกาะกระจก ไหลลงแบบหยุด-ไหล-หยุด ทิ้งรอยทางจางๆ  3) ฝนค่อยๆ หยุดตอนพัก */
+function updateGlass(dt){
+  if(Math.random()<dt*14*weatherLevel()) glass.push({x:rnd(win.x0,win.x1),y:rnd(win.y0,win.y1-4),r:Math.random()<.25?2:1,v:0,stick:rnd(.3,2)});
+  for(const d of glass){
+    d.stick-=dt;
+    if(d.stick<0){ d.v=Math.min(26,d.v+60*dt); d.y+=d.v*dt; if(Math.random()<dt*2){ d.stick=rnd(.2,1); d.v=0; } if(Math.random()<dt*25) trails.push({x:Math.round(d.x),y:Math.round(d.y)-1,t:0}); }
+  }
+  glass=glass.filter(d=>d.y<win.y1 && inWin(Math.round(d.x),Math.round(d.y)));
+  if(glass.length>140) glass.splice(0,glass.length-140);
+  for(const t of trails) t.t+=dt; trails=trails.filter(t=>t.t<2.5);
+}
+/* ---------- STEP 6: ลูปแอนิเมชัน ---------- */
+let last=performance.now();
+function frame(now){
+  const dt=Math.min(.05,(now-last)/1000); last=now; time+=dt;
+  sizeCheck+=dt; if(sizeCheck>.3){ sizeCheck=0; checkSize(); }
+  theme+=(themeTarget-theme)*Math.min(1,dt*.5); if(Math.abs(themeTarget-theme)<.002) theme=themeTarget;
+  for(const s of [stage,prevStage]) if(Math.abs(theme-skyT[s])>.02 || (theme===themeTarget && skyT[s]!==theme)) renderSky(s);
+  speed+=(speedTarget-speed)*Math.min(1,dt*.6); travel+=18*speed*dt;
+  if(stageFade<1) stageFade=Math.min(1,stageFade+dt/2.5);
+  if(stage===4){ const target=win.x0+(win.x1-win.x0)*.76; islandX+=(target-islandX)*Math.min(1,dt*.5); }
+  updateMouse(dt); updateGlass(dt); updateSouvenirs();
+
+  ctx.fillStyle='#1b2b4d'; ctx.fillRect(0,0,W,H);
+  if(stageFade<1) drawCity(prevStage,1);
+  drawCity(stage,stageFade);
+  drawWeather(dt);
+  // หยดน้ำบนกระจก
+  ctx.fillStyle='#d8ecfa';
+  for(const t of trails){ ctx.globalAlpha=.18*(1-t.t/2.5); ctx.fillRect(t.x,t.y,1,1); }
+  for(const d of glass){ ctx.globalAlpha=.75; ctx.fillStyle='#d8ecfa'; ctx.fillRect(Math.round(d.x),Math.round(d.y),d.r,d.r+1); ctx.fillStyle='#ffffff'; ctx.fillRect(Math.round(d.x),Math.round(d.y),1,1); }
+  ctx.globalAlpha=1;
+  // ฝ้าไอน้ำที่มุมกระจก
+  ctx.fillStyle='#e8f2fa'; ctx.globalAlpha=.06+.08*weatherLevel(); ctx.fillRect(win.x0,win.y1-6,win.x1-win.x0,6); ctx.globalAlpha=1;
+
+  drawHUD(false);
+  ctx.drawImage(interior,0,0);
+  drawHUD(true);
+  drawArmor();
+  if(counterC) ctx.drawImage(counterC,0,0);
+  drawKatana();
+  drawSouvenirs(false);
+  drawMouse();
+  drawSouvenirs(true);
+  drawSun(theme, dt);
+  // ไฟห้อยเพดาน + แสงอุ่น
+  const lx=Math.round(win.x0+(win.x1-win.x0)*.36)+10, ly=Math.max(6,win.y0-8+(portrait?-Math.round(H*.05):0)), sway=Math.round(Math.sin(time*.8)*1);
+  if(!portrait){ ctx.fillStyle='#3a2a20'; line(ctx,lx,0,lx+sway,ly-3); ctx.fillStyle='#4f9de0'; ctx.fillRect(lx+sway-3,ly-3,7,2); ctx.fillRect(lx+sway-2,ly-4,5,1); ctx.fillStyle='#fff3c4'; ctx.fillRect(lx+sway-1,ly-1,3,1); }
+  ctx.globalCompositeOperation='lighter';
+  if(!portrait){ ctx.globalAlpha=.35; ctx.drawImage(glowSprite(16,'#ffc46b'),lx+sway-16,ly-12); }
+  ctx.globalAlpha=.18; ctx.drawImage(glowSprite(26,'#ffb35c'),seat.x+11-26,seat.y-14-26);
+  ctx.globalAlpha=1; ctx.globalCompositeOperation='source-over';
+  requestAnimationFrame(frame);
+}
+/* ---------- STEP 7: แดดสาดเข้าห้อง (ตอนพัก) ----------
+   ลำแสงสีทองเฉียงจากหน้าต่างลงไปถึงพื้น 2 ลำ (ซ้าย/ขวาของเสากลางหน้าต่าง)
+   วาดเป็นแถบเอียงทีละแถว ยิ่งไกลหน้าต่างยิ่งจาง ใช้โหมด 'lighter' ให้สีบวกกันเหมือนแสงจริง
+   แล้วมีฝุ่นละอองลอยวิบวับอยู่ในลำแสง */
+let motes=[], shadeMask=null;
+function beamPanes(){ const cx=Math.round((win.x0+win.x1)/2); return [[win.x0+2,cx-2],[cx+2,win.x1-2]]; }
+function drawSun(a,dt){
+  if(a<.02){ motes.length=0; return; }
+  const k=.55, top=win.y0+win.arch, span=H-top;
+  // ห้องมืดลงนิดหนึ่ง (ยกเว้นหน้าต่าง) ลำแสงจะได้เด่น
+  ctx.globalAlpha=.2*a; ctx.drawImage(shadeMask,0,0);
+  ctx.fillStyle=CITIES[stage].beam;
+  for(const [p0,p1] of beamPanes()){
+    const w=p1-p0;
+    for(let y=top;y<H;y++){
+      const t=(y-top)/span, sh=Math.round((y-top)*k), fade=a*(1-t*.75);
+      ctx.globalAlpha=.22*fade; ctx.fillRect(p0+sh,y,w,1);                                 // ทั้งลำ
+      ctx.globalAlpha=.16*fade; ctx.fillRect(p0+sh+Math.round(w*.2),y,Math.round(w*.45),1);  // แกนกลางสว่างกว่า
+      ctx.globalAlpha=.1*fade; ctx.fillRect(p0+sh+Math.round(w*.75),y,Math.max(1,Math.round(w*.12)),1);
+    }
+  }
+  ctx.globalCompositeOperation='lighter';
+  // ฝุ่นละอองในลำแสง
+  if(motes.length<40 && Math.random()<dt*20) { const [p0,p1]=beamPanes()[Math.random()<.5?0:1], y=rnd(top,gY); motes.push({x:rnd(p0,p1)+(y-top)*k, y, vx:rnd(-1,1.5), vy:rnd(-1.2,.6), p:rnd(0,6), life:rnd(4,9), t:0}); }
+  ctx.fillStyle='#fff3c4';
+  for(const m of motes){ m.t+=dt; m.x+=m.vx*dt+Math.sin(time*.8+m.p)*.6*dt; m.y+=m.vy*dt; const f=Math.min(1,m.t,m.life-m.t);
+    ctx.globalAlpha=Math.max(0,f)*a*(.4+.4*Math.sin(time*3+m.p)); ctx.fillRect(Math.round(m.x),Math.round(m.y),1,1); }
+  motes=motes.filter(m=>m.t<m.life);
+  ctx.globalAlpha=1; ctx.globalCompositeOperation='source-over';
+}
+/* ---------- STEP 8: ของที่ระลึกจากแต่ละเมือง ----------
+   พักที่เมืองไหน ของจากเมืองนั้นจะ "ผุด" ขึ้นมาในห้อง (เด้งขยายแล้วหดกลับ + ประกาย + เสียงกริ๊ง)
+   ฝน → ร่มสีฟ้า | นีออน → ดาบคาตานะนีออน | ซากุระ → แจกันกิ่งซากุระ + โคมแดง | หิมะ → ลูกแก้วหิมะ + ไฟดาวรอบหน้าต่าง
+   ถึงงานวันเกิด → ธงราว ลูกโป่ง เค้ก และหมวกปาร์ตี้บนหัวหนู   (เริ่มเดินทางรอบใหม่ ห้องจะกลับเป็นแบบเดิม) */
+let souv=[{t:-1},{t:-1},{t:-1},{t:-1}], partyT=-1, souvArt={}, sparks=[];
+function souvCount(){ return mode==='focus' ? done%4 : mode==='long' ? 4 : done%4; }
+function popScale(t0){ if(t0<0) return 0; const k=(time-t0)/.55; if(k>=1) return 1; return k<.6 ? k/.6*1.25 : 1.25-(k-.6)/.4*.25; }
+function addSparks(x,y){ for(let i=0;i<10;i++){ const a=i/10*Math.PI*2; sparks.push({x,y,vx:Math.cos(a)*rnd(10,20),vy:Math.sin(a)*rnd(10,20)-6,t:0,c:rpick(['#ffffff','#ffd98a','#a8e0ff','#ff9fc4'])}); } }
+function updateSouvenirs(){
+  const n=souvCount();
+  souv.forEach((s,i)=>{ const want=i<n; if(want && s.t<0){ s.t=time; const a=souvAnchor(i); addSparks(a.x,a.y-5); Sound.sparkle(); } if(!want) s.t=-1; });
+  if(mode==='long' && partyT<0){ partyT=time; addSparks(seat.x+11,seat.y-20); }
+  if(mode!=='long') partyT=-1;
+}
+function souvAnchor(i){
+  const cx=Math.round((win.x0+win.x1)/2);
+  return [ {x:seat.x-7,y:sill-1}, armorP?{x:armorP.x,y:armorP.y-12}:{x:cx,y:win.y0+Math.round(win.arch*.75)}, {x:seat.x+31,y:sill-1}, {x:seat.x+40,y:sill-1} ][i];
+}
+function art(w,h,fn){ const c=mk(w,h), g=c.getContext('2d'); fn(g); return c; }
+function buildSouvenirs(){
+  souvArt.umbrella=art(7,13,g=>{ g.fillStyle='#4f9de0'; g.fillRect(1,0,5,1); g.fillRect(0,1,7,2); g.fillStyle='#7cc6f2'; g.fillRect(1,1,1,1); g.fillRect(4,1,1,1);
+    g.fillStyle='#2f6fb0'; g.fillRect(0,3,1,1); g.fillRect(3,3,1,1); g.fillRect(6,3,1,1); g.fillStyle='#8a5a3e'; g.fillRect(3,3,1,9); g.fillRect(4,11,1,1); g.fillRect(5,10,1,1); });
+  // ชุดเกราะไฮเทค (ออกแบบเอง): เกราะขาว-ฟ้า หมวกมีหูกลมๆ แบบหนู ไวเซอร์กับแกนพลังงานเรืองแสง
+  souvArt.armor=art(16,25,g=>{ const rows=[
+    "..OOO......OOO..",
+    ".OLLLO....OLLLO.",
+    ".OLBLOOOOOOLBLO.",
+    "..OOWWWWWWWWOO..",
+    "...OWLLLLLLWO...",
+    "...OOVVVVVVOO...",
+    "...OWDDDDDDWO...",
+    "....OOWWWWOO....",
+    ".OOOOGGGGGGOOOO.",
+    "OWWBOWWWWWWOBWWO",
+    "OWBBOWLCCLWOBBWO",
+    "OOOOOWLCCLWOOOOO",
+    ".OBO.OWWWWO.OBO.",
+    ".OBO.ODDDDO.OBO.",
+    ".OWO.OGGGGO.OWO.",
+    ".OVO.OWWWWO.OVO.",
+    "..O..OWOOWO..O..",
+    ".....OWOOWO.....",
+    ".....OBOOBO.....",
+    ".....OWOOWO.....",
+    ".....OBOOBO.....",
+    "....OODOODOO....",
+    "....OOOOOOOO....",
+    ".....SSSSSS.....",
+    "...SSSSSSSSSS..."];
+    const col={O:'#22283f',W:'#eef5fc',L:'#a8d4f2',B:'#4f9de0',D:'#2f6fb0',V:'#3ff0ff',C:'#ff6fd8',G:'#5a6488',S:'#3a4656'};
+    rows.forEach((r,y)=>[...r].forEach((c,x)=>{ if(c==='.') return; g.fillStyle=col[c]; g.fillRect(x,y,1,1); })); });
+  souvArt.vase=art(9,14,g=>{ g.fillStyle='#5a3a2e'; g.fillRect(4,0,1,8); g.fillRect(2,2,2,1); g.fillRect(5,4,3,1); g.fillRect(1,5,3,1);
+    for(const [x,y] of [[2,1],[5,0],[7,3],[1,4],[4,2],[6,5],[3,6],[8,4]]){ g.fillStyle='#ffb7c9'; g.fillRect(x,y,1,1); } g.fillStyle='#fff0f4'; g.fillRect(4,1,1,1); g.fillRect(6,3,1,1);
+    g.fillStyle='#4f9de0'; g.fillRect(2,8,5,6); g.fillRect(3,7,3,1); g.fillStyle='#ffffff'; g.fillRect(3,9,1,1); g.fillRect(5,11,1,1); g.fillStyle='#2f6fb0'; g.fillRect(2,13,5,1); });
+  souvArt.lantern=art(5,8,g=>{ g.fillStyle='#2a1a18'; g.fillRect(2,0,1,1); g.fillRect(0,1,5,1); g.fillRect(0,7,5,1); g.fillStyle='#e2463b'; g.fillRect(0,2,5,5); g.fillStyle='#ff8a7a'; g.fillRect(0,2,1,5); g.fillStyle='#7a1d16'; g.fillRect(2,3,1,3); });
+  souvArt.globe=art(8,9,g=>{ g.fillStyle='#d8ecfa'; ell(g,4,3,3,3); g.fillStyle='#ffffff'; g.fillRect(3,5,3,1); g.fillStyle='#3f6a5a'; g.fillRect(4,2,1,3); g.fillRect(3,4,3,1);
+    g.fillStyle='#ffffff'; g.fillRect(2,1,1,1); g.fillRect(6,2,1,1); g.fillRect(4,1,1,1); g.fillStyle='#8a5a3e'; g.fillRect(1,7,7,2); g.fillStyle='#ff9fc4'; g.fillRect(2,7,5,1); });
+  souvArt.cake=art(9,9,g=>{ g.fillStyle='#ffffff'; g.fillRect(0,8,9,1); g.fillStyle='#ffe9b8'; g.fillRect(1,4,7,4); g.fillStyle='#7cc6f2'; g.fillRect(1,3,7,1); g.fillRect(1,6,7,1);
+    g.fillStyle='#ff9fc4'; g.fillRect(2,5,1,1); g.fillRect(5,5,1,1); g.fillStyle='#ffffff'; g.fillRect(4,0,1,3); });
+}
+function drawArt(c,ax,ay,s){ if(s<=0) return; const w=c.width*s, h=c.height*s; ctx.drawImage(c,Math.round(ax-w/2),Math.round(ay-h),Math.round(w),Math.round(h)); }
+// front=false: ของที่อยู่หลังหนู  front=true: ของที่อยู่หน้าหนู/แสง
+function drawSouvenirs(front){
+  const cx=Math.round((win.x0+win.x1)/2), night=1-theme;
+  if(!front){
+    // ไฟดาวรอบโค้งหน้าต่าง (หิมะ)
+    if(souv[3].t>=0){ const k=Math.min(1,(time-souv[3].t)/1), r=(win.x1-win.x0)/2+1, cy=win.y0+win.arch;
+      for(let i=0;i<=24*k;i++){ const a=Math.PI+Math.PI*i/24, x=Math.round(cx+Math.cos(a)*r), y=Math.round(cy+Math.sin(a)*win.arch*1.05);
+        ctx.fillStyle='#3a2a20'; ctx.fillRect(x,y,1,1); if(i%2===0){ ctx.fillStyle=['#ffd98a','#a8e0ff','#ff9fc4'][i%3]; ctx.fillRect(x,y+1,1,1); } } }
+    // โคมแดง (ซากุระ)
+    if(souv[2].t>=0){ const lx=win.x0+7, ly=win.y0+win.arch+10; ctx.fillStyle='#3a2a20'; ctx.fillRect(lx,win.y0+win.arch-2,1,ly-8-(win.y0+win.arch-2)); drawArt(souvArt.lantern,lx,ly,popScale(souv[2].t)); }
+    // ธงราววันเกิด
+    if(partyT>=0){ const k=Math.min(1,(time-partyT)/1.2), cols=['#7cc6f2','#ff9fc4','#ffd166','#a8e6b4','#c3a6ff'];
+      for(let x=win.x0;x<win.x0+(win.x1-win.x0)*k;x+=4){ const t=(x-win.x0)/(win.x1-win.x0), y=win.y0+win.arch+2+Math.round(Math.sin(t*Math.PI*2)**2*3);
+        ctx.fillStyle='#ffffff'; ctx.fillRect(x,y,4,1); ctx.fillStyle=cols[((x-win.x0)/4|0)%5]; ctx.fillRect(x+1,y+1,2,2); ctx.fillRect(x+1,y+3,1,1); } }
+    // ร่มพิงขอบหน้าต่าง
+    if(souv[0].t>=0){ const a=souvAnchor(0); drawArt(souvArt.umbrella,a.x,a.y,popScale(souv[0].t)); }
+    // ลูกโป่งผูกกับเบาะ
+    if(partyT>=0){ const s=popScale(partyT), cols=['#7cc6f2','#ff9fc4','#ffd166'];
+      for(let i=0;i<3;i++){ const bx=seat.x-3+i*3+Math.round(Math.sin(time*1.4+i)*1.5), by=Math.round(sill-30+i*3-(s-1)*10);
+        ctx.fillStyle='#ffffff'; line(ctx,seat.x-1,sill-3,bx,by+3); ctx.fillStyle=cols[i]; ell(ctx,bx,by,2,3); ctx.fillStyle='#ffffff'; ctx.fillRect(bx-1,by-2,1,1); } }
+  } else {
+    if(souv[2].t>=0){ const a=souvAnchor(2); drawArt(souvArt.vase,a.x,a.y,popScale(souv[2].t)); }
+    if(souv[3].t>=0){ const a=souvAnchor(3), s=popScale(souv[3].t); drawArt(souvArt.globe,a.x,a.y,s); if(s>0 && Math.random()<.04){ ctx.fillStyle='#ffffff'; ctx.fillRect(a.x-2+Math.floor(Math.random()*5),a.y-7+Math.floor(Math.random()*3),1,1);} }
+    if(partyT>=0){ drawArt(souvArt.cake,seat.x+48,sill-1,popScale(partyT)); ctx.fillStyle=Math.sin(time*12)>0?'#ffd166':'#ff9f43'; if(popScale(partyT)>.9) ctx.fillRect(seat.x+48,sill-11,1,1); }
+    // แสงเรืองของป้ายนีออน/โคม/ไฟดาว
+    ctx.globalCompositeOperation='lighter';
+    if(souv[2].t>=0){ ctx.globalAlpha=.25+.45*night; ctx.drawImage(glowSprite(6,'#ff8a5a'),win.x0+7-6,win.y0+win.arch+6-6); }
+    // ประกายตอนของผุดขึ้นมา
+    for(const p of sparks){ p.t+=1/60; p.x+=p.vx/60; p.y+=p.vy/60; p.vy+=30/60; ctx.globalAlpha=Math.max(0,1-p.t/.7); ctx.fillStyle=p.c; ctx.fillRect(Math.round(p.x),Math.round(p.y),1,1); }
+    sparks=sparks.filter(p=>p.t<.7);
+    ctx.globalAlpha=1; ctx.globalCompositeOperation='source-over';
+  }
+}
+
+/* ---------- ชุดเกราะไฮเทค + ออร่าวน (ของที่ระลึกจากเมืองนีออน) ----------
+   ออร่าคืออนุภาคที่วิ่งวนเป็นวงรีรอบตัวเกราะพร้อมลอยขึ้นเป็นเกลียว
+   ครึ่งวงที่อยู่ "หลัง" เกราะวาดก่อนตัวเกราะ ครึ่งวงที่อยู่ "หน้า" วาดทีหลัง เลยดูเหมือนวนรอบตัวจริงๆ */
+function drawArmor(){
+  if(!armorP || souv[1].t<0) return;
+  const s=popScale(souv[1].t), on=Math.min(1,(time-souv[1].t)/1.5), night=1-theme, ax=armorP.x, ay=armorP.y, top=ay-25;
+  const bob=Math.round(Math.sin(time*1.3)*.6), N=16, spin=running?2.4:1.4;
+  // ออร่า: วงแหวนจุด 2 วงหมุนสวนทางกัน (ขึ้นลงช้าๆ) + ประกายลอยขึ้นเป็นเกลียว ใช้สีเข้มพอให้เห็นบนผนังสีอ่อน
+  const aura=front=>{
+    for(let ring=0;ring<2;ring++){ const ry2=ay-8-ring*9+Math.round(Math.sin(time*1.1+ring*2)*3), dir=ring?-1:1;
+      for(let i=0;i<20;i++){ const a=dir*time*spin*.8+i*Math.PI*2/20, z=Math.sin(a); if((z>0)!==front) continue;
+        const x=Math.round(ax+Math.cos(a)*11), y=Math.round(ry2+z*2.5), lit=((i-Math.floor(time*8))%5+5)%5===0;
+        ctx.globalAlpha=on*(front?.95:.55); ctx.fillStyle=lit?'#ffffff':ring?'#b45cff':'#2bb8ff'; ctx.fillRect(x,y,1,1); } }
+    for(let i=0;i<N;i++){
+      const a=time*spin+i*Math.PI*2/N, z=Math.sin(a); if((z>0)!==front) continue;
+      const h=((time*.35+i/N*2)%1), x=Math.round(ax+Math.cos(a)*(8-h*3)), y=Math.round(ay-2-h*27);
+      ctx.globalAlpha=on*(1-h)*(front?1:.6); ctx.fillStyle=i%4===0?'#ff4fc8':i%2?'#2bb8ff':'#3ff0ff'; ctx.fillRect(x,y,1,1);
+      ctx.globalAlpha*=.45; ctx.fillRect(x,y+1,1,1); } };
+  // เรืองแสงด้านหลังเป็นจังหวะหายใจ
+  ctx.globalCompositeOperation='lighter';
+  ctx.globalAlpha=on*(.1+.06*Math.sin(time*2))*(.4+.6*night); ctx.drawImage(glowSprite(15,'#3ff0ff'),ax-15,top+10-15);
+  ctx.globalAlpha=on*(.12+.06*Math.sin(time*2+1)); ctx.drawImage(glowSprite(9,'#ff6fd8'),ax-9,top+11-9);
+  ctx.globalCompositeOperation='source-over';
+  aura(false);
+  ctx.globalAlpha=1; drawArt(souvArt.armor,ax,ay+bob,s);
+  if(s>.9){
+    // ไวเซอร์สแกนซ้าย-ขวา + แกนพลังงานเต้น
+    const vx=ax-4+Math.round((Math.sin(time*2.2)+1)*2.5); ctx.fillStyle='#ffffff'; ctx.fillRect(vx,top+5+bob,1,1);
+    ctx.globalCompositeOperation='lighter';
+    ctx.globalAlpha=on*(.5+.3*Math.sin(time*5)); ctx.drawImage(glowSprite(3,'#ff6fd8'),ax-3,top+11+bob-3);
+    ctx.globalAlpha=on*(.35+.25*night); ctx.drawImage(glowSprite(4,'#3ff0ff'),ax-4,top+5+bob-4);
+    ctx.globalCompositeOperation='source-over';
+  }
+  aura(true);
+  ctx.globalAlpha=1;
+}
+
+/* ---------- หน้าต่างอัจฉริยะ (อัปเกรดจากเมืองนีออน) ----------
+   หน้าจอโปร่งแสงบนกระจก: แสงวิ่งวนรอบขอบ, ดวงตา AI กลางโค้ง, แถบเสียง, ไอคอนอากาศของเมือง,
+   แถบความคืบหน้าของ session ด้านล่าง และเส้นสแกนกวาดลงมาเป็นระยะ ตอนเพิ่งได้มาจะ "บูต" ทีละส่วน */
+function hudIcon(x,y){
+  const wx=CITIES[stage].wx, P=(c,px)=>{ ctx.fillStyle=c; for(const [a,b] of px) ctx.fillRect(x+a,y+b,1,1); }, t=Math.floor(time*3)%2;
+  if(wx==='rain'||wx==='drizzle'){ P('#bff8ff',[[1,0],[2,0],[3,0],[0,1],[1,1],[2,1],[3,1],[4,1]]); P('#3ff0ff',t?[[0,3],[2,4],[4,3]]:[[1,3],[3,4],[0,4]]); }
+  else if(wx==='petals'){ P('#ff9fe6',[[2,0],[0,2],[4,2],[1,4],[3,4]]); P('#ffffff',[[2,2]]); P('#ff6fd8',t?[[2,1],[1,2],[3,2]]:[[1,3],[3,3],[2,1]]); }
+  else if(wx==='snow'){ P('#bff8ff',[[2,0],[2,1],[2,3],[2,4],[0,2],[1,2],[3,2],[4,2]]); P('#ffffff',t?[[0,0],[4,4]]:[[4,0],[0,4]]); }
+  else { P('#ffd98a',[[2,0],[2,1],[0,2],[1,2],[2,2],[3,2],[4,2],[1,3],[3,3],[0,4],[4,4]]); }
+}
+function drawHUD(holo){
+  if(souv[1].t<0 || !hudEdge.length) return;
+  // n = ความเป็นกลางคืน: กลางวัน/ตอนแดดสาด HUD จะหรี่ลงเหลือแค่เส้นบางๆ ไม่แย่งความสนใจจากวิวข้างนอก
+  const k=Math.min(1,(time-souv[1].t)/2), n=1-theme, A=.25+.45*n;
+  const {x0,x1,y0,y1,arch}=win, cx=Math.round((x0+x1)/2), ry=y0+arch;
+  const flick=k<1 && Math.random()<.25 ? .3 : 1;   // กระพริบตอนบูต
+  if(!holo){
+    // 1) ขอบกระจก: ตอนกลางคืนเรืองจางๆ ทั้งเส้น + มีแสงสั้นๆ วิ่งวนรอบตลอด
+    const N=hudEdge.length, shown=Math.floor(N*Math.min(1,k*1.5)), head=Math.floor(time*N/6)%N;
+    ctx.fillStyle='#3ff0ff';
+    for(let i=0;i<shown;i++){ const d=(head-i+N)%N, a=d<10 ? (.9-d*.07)*(.5+.5*n) : .22*n; if(a<=0) continue; ctx.globalAlpha=flick*a; ctx.fillRect(hudEdge[i][0],hudEdge[i][1],1,1); }
+  }
+  if(k<.35){ ctx.globalAlpha=1; return; }
+  const k2=Math.min(1,(k-.35)/.65);
+  if(!holo){
+    // 2) มุมกรอบแบบเล็งเป้า (เล็กๆ ชิดขอบ)
+    ctx.globalAlpha=flick*A*.7*k2; ctx.fillStyle='#bff8ff';
+    for(const [bx,by,sx,sy] of [[x0+2,ry+1,1,1],[x1-3,ry+1,-1,1],[x0+2,y1-4,1,-1],[x1-3,y1-4,-1,-1]]){ ctx.fillRect(Math.min(bx,bx+sx*2),by,3,1); ctx.fillRect(bx,Math.min(by,by+sy*2),1,3); }
+  }
+  if(holo){
+    // 3) ดวงตา AI เล็กๆ ใต้ยอดโค้ง: จุดหมุนรอบ + แกนกลางเต้น + กระพริบตาเป็นระยะ
+    const oy=y0+Math.round(arch*.45), r=Math.max(2,Math.round(arch*.13)), spin=running?3:1.2;
+    for(let i=0;i<8;i++){ const a=i/8*Math.PI*2, lit=((time*spin*1.4-i)%8+8)%8; ctx.globalAlpha=flick*A*k2*(lit<2?1-lit*.3:.45); ctx.fillStyle=lit<1?'#ffffff':'#3ff0ff'; ctx.fillRect(Math.round(cx+Math.cos(a)*r),Math.round(oy+Math.sin(a)*r),1,1); }
+    const blink=(time%5)<.15, pulse=.75+.25*Math.sin(time*3);
+    ctx.globalAlpha=flick*k2*pulse*(.45+.5*n); ctx.fillStyle=stage===4?'#ffd98a':'#ff6fd8';
+    if(blink) ctx.fillRect(cx-1,oy,3,1); else ctx.fillRect(cx-1,oy-1,3,2);
+    if(n>.05){ ctx.globalCompositeOperation='lighter'; ctx.globalAlpha=k2*.22*pulse*n; ctx.drawImage(glowSprite(r+2,'#3ff0ff'),cx-r-2,oy-r-2); ctx.globalCompositeOperation='source-over'; }
+    ctx.globalAlpha=1; return;
+  }
+  // จากนี้ไปเป็นของที่โชว์แค่ตอนกลางคืน
+  if(n>.05){
+    const B=flick*k2*n;
+    // 4) แผงเล็กมุมขวา: ไอคอนอากาศของเมือง + แถบเสียงขยับตามเพลง (ปิดเสียงจะนิ่ง)
+    const px=x1-16, py=ry+3, muted=document.querySelector('.sound').classList.contains('muted');
+    ctx.globalAlpha=B*.22; ctx.fillStyle='#0d1a3a'; ctx.fillRect(px,py,13,7);
+    ctx.globalAlpha=B*.65; hudIcon(px+1,py+1);
+    for(let i=0;i<3;i++){ const h=muted?1:1+Math.round((Math.sin(time*(4+i)+i*1.7)+1)*1.4); ctx.fillStyle=i===1?'#ff9fe6':'#7cc6f2'; ctx.fillRect(px+7+i*2,py+6-h,1,h); }
+    // 5) เส้นสแกนบางๆ กวาดลงทุก 9 วินาที
+    const sc=(time%9)/1.8; if(sc<1){ const sy=Math.round(y0+(y1-y0)*sc); ctx.globalAlpha=B*.1; ctx.fillStyle='#bff8ff'; for(let x=x0;x<x1;x++) if(inWin(x,sy)) ctx.fillRect(x,sy,1,1); }
+  }
+  // 6) แถบความคืบหน้า session บางๆ ชิดขอบล่างกระจก
+  const left=running?Math.max(0,(endAt-performance.now())/1000):remaining, f=total>0?1-left/total:0, bw=x1-x0-12, by2=y1-2;
+  ctx.globalAlpha=flick*A*.8*k2; ctx.fillStyle=mode==='focus'?'#3ff0ff':'#ffd98a'; ctx.fillRect(x0+6,by2,Math.round(bw*f*k2),1);
+  if(running){ ctx.fillStyle='#ffffff'; ctx.fillRect(x0+6+Math.round(bw*f*k2),by2,1,1); }
+  ctx.globalAlpha=1;
+}
+
+/* ---------- ดาบต้องสาป (ของที่ระลึกจากเมืองซากุระ) ----------
+   คาตานะในฝักสีดำ วางพิงเคาน์เตอร์เอียงนิดๆ วาดทีละแถวจากล่างขึ้นบน (แถวละ 2 พิกเซล เลื่อนไปทางขวาทีละ 1/4)
+   ทุกๆ ~7 วินาที ดาบจะสั่นแล้วเลื่อนออกจากฝักเอง 3 พิกเซล เห็นใบดาบวาบแสงม่วง แล้วกระแทกกลับเข้าฝัก
+   รอบๆ มีหัววิญญาณตัวเล็กๆ ลากหางไฟวนรอบ (ด้านหลังวาดก่อน ด้านหน้าวาดทีหลัง) */
+function katDraw(t){   // ระยะที่ดาบโผล่ออกจากฝัก (0-3) และการสั่น ณ เวลา t
+  const c=t%7.5;
+  if(c<.6) return {d:0, sh:Math.round(Math.sin(c*60))*(c>.2?1:0)};      // สั่นก่อน
+  if(c<.9) return {d:Math.round((c-.6)/.3*3), sh:0};                     // เลื่อนออก
+  if(c<1.9) return {d:3, sh:0};                                          // ค้างไว้ ใบดาบเรืองแสง
+  if(c<2.0) return {d:Math.round((2.0-c)/.1*3), sh:0};                   // กระแทกกลับ
+  return {d:0, sh:0};
+}
+function drawKatana(){
+  if(!katP || souv[2].t<0) return;
+  const s=popScale(souv[2].t), on=Math.min(1,(time-souv[2].t)/1.5), n=1-theme;
+  const {d,sh}=katDraw(time), bx=katP.x+sh, by=katP.y, L=Math.max(4,Math.round(24*s)), cut=24-L, slope=.25;
+  const cx=bx+3, cy=by-12;   // จุดกลางสำหรับวงโคจรวิญญาณ
+  const ghosts=front=>{
+    for(let g=0;g<3;g++){
+      for(let k=5;k>=0;k--){   // k>0 = หางไฟ (ตำแหน่งย้อนเวลา), k=0 = หัว
+        const tt=time-k*.06, a=tt*1.3+g*Math.PI*2/3, z=Math.sin(a); if((z>0)!==front && k===0) continue; if((z>0)!==front) continue;
+        const x=Math.round(cx+Math.cos(a)*9), y=Math.round(cy+Math.sin(a)*3+Math.sin(tt*2.3+g)*5-g*3);
+        if(k>0){ ctx.globalAlpha=on*(.85-k*.12)*(front?1:.6); ctx.fillStyle=k<3?'#9a7cf2':'#6a4adf'; ctx.fillRect(x,y,1,1); continue; }
+        ctx.globalAlpha=on*(.85+.15*Math.sin(time*9+g))*(front?1:.6);
+        ctx.fillStyle='#5a3a8a'; ctx.fillRect(x-2,y-2,5,4); ctx.fillRect(x-1,y-3,3,1); ctx.fillRect(x-1,y+2,3,1);   // ขอบม่วงเข้ม
+        ctx.fillStyle='#eef0ff'; ctx.fillRect(x-1,y-2,3,4); ctx.fillRect(x-2,y-1,5,2);
+        ctx.fillStyle='#3a2f50'; ctx.fillRect(x-1,y,1,1); ctx.fillRect(x+1,y,1,1);   // ตาสองจุด
+      }
+    }
+  };
+  // เรืองม่วงเป็นจังหวะ แรงขึ้นตอนดาบโผล่
+  ctx.globalCompositeOperation='lighter';
+  ctx.globalAlpha=on*(.08+.05*Math.sin(time*2)+(d>0?.12:0))*(.5+.5*n); ctx.drawImage(glowSprite(11,'#9a5cff'),cx-11,cy-11);
+  ctx.globalCompositeOperation='source-over';
+  ghosts(false);
+  ctx.globalAlpha=1;
+  const row=(r,col,w=2,dx=0)=>{ if(r<cut) return; const rr=r-cut; ctx.fillStyle=col; ctx.fillRect(bx+Math.round(r*slope)+dx,by-rr,w,1); };
+  // ฝัก
+  row(0,'#b08a3a'); row(1,'#b08a3a');
+  for(let r=2;r<14;r++){ row(r,'#1a1424'); row(r,'#3a2f50',1); }
+  row(10,'#7a2a86'); row(11,'#a8408f'); row(12,'#7a2a86');   // เชือกพันฝัก
+  row(14,'#d8b25a');                                           // ปากฝัก
+  // ใบดาบที่โผล่ออกมา
+  for(let r=15;r<15+d;r++){ row(r,'#d8d8f0'); row(r,'#ffffff',1,1); }
+  // กระบังดาบ ด้าม หัวด้าม (เลื่อนขึ้นตาม d)
+  row(15+d,'#2a2a30',4,-1); row(15+d,'#d8b25a',1,-1);
+  for(let r=16+d;r<23+d;r++){ row(r,'#1a1424'); row(r,(r-d)%2?'#9a7cf2':'#1a1424',1,(r-d)%2); }
+  row(23+d,'#d8b25a');
+  // ใบดาบวาบแสง
+  if(d>0){ const r=15+d-1, x=bx+Math.round(r*slope), y=by-(r-cut); ctx.globalCompositeOperation='lighter'; ctx.globalAlpha=on*.7; ctx.drawImage(glowSprite(4,'#c3a6ff'),x-3,y-4); ctx.globalCompositeOperation='source-over';
+    if(katDraw(time).d===3 && (time%7.5)<1.2){ ctx.globalAlpha=1; ctx.fillStyle='#ffffff'; ctx.fillRect(x+2,y-1,1,1); ctx.fillRect(x+3,y-2,1,1); } }
+  ghosts(true);
+  ctx.globalAlpha=1;
+}
+
+const glowCache={};
+function glowSprite(r,color){ const key=r+color; if(glowCache[key]) return glowCache[key]; const c=mk(r*2+1,r*2+1), g=c.getContext('2d'); g.fillStyle=color; g.globalAlpha=.16; for(let k=r;k>=1;k-=2) disc(g,r,r,k); return glowCache[key]=c; }
+
+addEventListener('resize',()=>{ clearTimeout(resize.t); resize.t=setTimeout(checkSize,120); });
+addEventListener('orientationchange',()=>{ setTimeout(checkSize,300); setTimeout(checkSize,900); });
+for(const ev of ['gesturestart','gesturechange','gestureend']) document.addEventListener(ev,e=>e.preventDefault(),{passive:false});
+document.addEventListener('touchmove',e=>{ if(e.touches.length>1) e.preventDefault(); },{passive:false});
+let lastTouchEnd=0;
+document.addEventListener('touchend',e=>{ const n=Date.now(); if(n-lastTouchEnd<300 && !e.target.closest('button,input,label')) e.preventDefault(); lastTouchEnd=n; },{passive:false});
+addEventListener('scroll',()=>{ if(scrollX||scrollY) scrollTo(0,0); });
+
+/* ======================================================================
+   PART 2 — ตัวจับเวลา
+   ====================================================================== */
+const $=id=>document.getElementById(id);
+const ring=$('ring'), timeEl=$('time'), hint=$('hint'), startBtn=$('start'), autoBox=$('auto');
+const LABEL={focus:'focus',short:'short break',long:'long break'};
+let mins={focus:25,short:5,long:15};
+try{ const s=JSON.parse(localStorage.getItem('nudee-rain-mins')); if(s) mins={...mins,...s}; }catch(e){}
+let mode='focus', total=mins.focus*60, remaining=total, running=false, endAt=0, done=0;
+const TICKS=60, ticks=[], NS='http://www.w3.org/2000/svg';
+const litGroup=document.createElementNS(NS,'g'); litGroup.setAttribute('class','lit');
+const dimGroup=document.createElementNS(NS,'g'); ring.append(dimGroup,litGroup);
+for(let i=0;i<TICKS;i++){ const r=document.createElementNS(NS,'rect'); r.setAttribute('x',58); r.setAttribute('y',4); r.setAttribute('width',4); r.setAttribute('height',9);
+  r.setAttribute('transform',`rotate(${i*360/TICKS} 60 60)`); r.setAttribute('class','tick'); dimGroup.append(r); ticks.push(r); }
+const fmt=s=>{ s=Math.ceil(s); return String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0'); };
+function render(){
+  const t=fmt(remaining); timeEl.textContent=t;
+  const lit=Math.ceil((remaining/total)*TICKS-1e-9);
+  ticks.forEach((r,i)=>{ const on=i<lit; if(on!==r.classList.contains('on')){ r.classList.toggle('on',on); (on?litGroup:dimGroup).append(r);} });
+  startBtn.textContent=running?'pause':(remaining<total?'resume':'start');
+  $('minus').disabled=$('plus').disabled=running;
+  document.querySelectorAll('.tabs button').forEach(b=>b.classList.toggle('active',b.dataset.mode===mode));
+  const filled=(mode==='long'&&done>0&&done%4===0)?4:done%4;
+  document.querySelectorAll('#dots i').forEach((d,i)=>d.classList.toggle('on',i<filled));
+  $('sessLabel').textContent=CITIES[stage].name;
+  if(running){ hint.textContent=(autoBox.checked?'auto · ':'')+(mode==='focus'?`flying through ${CITIES[stage].name}...`:mode==='long'?'happy birthday, Nu•Dee!':`sunny day in ${CITIES[stage].name}!`); hint.classList.remove('blink'); }
+  else if(remaining<total){ hint.textContent='paused'; hint.classList.add('blink'); }
+  document.title=running?`${t} · ${LABEL[mode]}`:'Nu•Dee pomodoro · birthday edition';
+  keepAwake(running);
+}
+function setMode(m){
+  mode=m; running=false; total=mins[m]*60; remaining=total;
+  themeTarget = m==='focus' ? 0 : 1;
+  setStage(m==='long' ? 4 : m==='short' ? Math.max(0,(done%4)-1) : done%4);
+  speedTarget = m==='focus' ? .25 : 0;
+  document.body.classList.toggle('break', m!=='focus');
+  hint.textContent='press start to begin'; hint.classList.add('blink');
+  render();
+}
+function start(){ ensureAudio(); if(remaining<=0) return; running=true; speedTarget = mode==='focus' ? 1 : 0; endAt=performance.now()+remaining*1000; render(); }
+function pause(){ remaining=Math.max(0,(endAt-performance.now())/1000); running=false; speedTarget = mode==='focus' ? .25 : 0; render(); }
+function advance(sound){
+  const finished=mode;
+  if(sound) chime();
+  if(mode==='focus'){ done++; setMode(done%4===0?'long':'short'); } else setMode('focus');
+  if(mode==='long') Sound.birthday();
+  if(autoBox.checked){ if(finished==='long'){ autoBox.checked=false; hint.textContent='cycle complete! press start'; return; } start(); return; }
+  if(sound) hint.textContent = mode==='focus' ? 'break is over. press start' : 'well done! press start for a break';
+}
+setInterval(()=>{ if(!running) return; remaining=Math.max(0,(endAt-performance.now())/1000); if(remaining<=0){ running=false; advance(true); return; } render(); },200);
+
+let wakeLock=null, wakePending=false;
+async function keepAwake(on){ try{ if(on&&!wakeLock&&!wakePending&&'wakeLock' in navigator&&document.visibilityState==='visible'){ wakePending=true; wakeLock=await navigator.wakeLock.request('screen'); wakeLock.addEventListener('release',()=>{wakeLock=null;}); } else if(!on&&wakeLock){ const w=wakeLock; wakeLock=null; await w.release(); } }catch(e){} finally{ wakePending=false; } }
+document.addEventListener('visibilitychange',()=>{ if(document.visibilityState==='visible'&&running) keepAwake(true); });
+
+const ensureAudio=()=>Sound.unlock(), chime=()=>Sound.chime();
+function adjust(d){ if(running) return; mins[mode]=Math.min(90,Math.max(1,mins[mode]+d)); try{ localStorage.setItem('nudee-rain-mins',JSON.stringify(mins)); }catch(e){} total=remaining=mins[mode]*60; render(); }
+startBtn.onclick=()=>running?pause():start();
+$('reset').onclick=()=>setMode(mode);
+$('skip').onclick=()=>advance(false);
+$('minus').onclick=()=>adjust(-1); $('plus').onclick=()=>adjust(1);
+autoBox.onchange=()=>{ Sound.click(autoBox.checked?'on':'off'); render(); };
+document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>setMode(b.dataset.mode));
+// เสียงกดปุ่ม: ปุ่ม start เป็นเสียงกริ๊งขึ้น ปุ่มอื่นเป็นเสียงป๊อปเบาๆ
+document.addEventListener('click',e=>{
+  const b=e.target.closest('button'); if(!b) return;
+  if(b.id==='start') Sound.click(running?'start':'pause');
+  else if(b.id==='mute') {}
+  else if(b.id==='plus'||b.id==='minus') Sound.click(b.id);
+  else if(b.closest('.tabs')) Sound.click('tab');
+  else Sound.click('pop');
+});
+addEventListener('keydown',e=>{
+  if(e.target.tagName==='BUTTON'&&(e.code==='Space'||e.code==='Enter')) return;
+  if(e.code==='Space'){ e.preventDefault(); running?pause():start(); Sound.click(running?'start':'pause'); }
+  if(e.key==='r'||e.key==='R'){ setMode(mode); Sound.click('pop'); }
+  if(e.key==='m'||e.key==='M') Sound.toggleMute();
+});
+
+/* ======================================================================
+   PART 3 — เสียง (Web Audio ทั้งหมด)
+   ฝนตก (หยุดตอนพัก) + หยดน้ำ + เพลงเปียโนไฟฟ้า lo-fi ช้าๆ + นกร้องหลังฝนหยุด + เสียงกดปุ่ม
+   ====================================================================== */
+const Sound=(()=>{
+  let ac=null, master, reverb, bus={}, noiseBuf, pinkBuf, brownBuf;
+  const GAIN=3.5; let vol=.6, muted=false;
+  try{ const s=JSON.parse(localStorage.getItem('nudee-rain-sound')); if(s){ vol=s.vol??vol; muted=!!s.muted; } }catch(e){}
+  const save=()=>{ try{ localStorage.setItem('nudee-rain-sound',JSON.stringify({vol,muted})); }catch(e){} };
+  const R2=(a,b)=>a+Math.random()*(b-a);
+  const NOTE={C:0,D:2,E:4,F:5,G:7,A:9,B:11};
+  const freq=n=>{ const m=n.match(/^([A-G])(#?)(\d)$/); return 440*Math.pow(2,(NOTE[m[1]]+(m[2]?1:0)+12*(+m[3]+1)-69)/12); };
+  function noise(sec,kind){ const n=Math.floor(ac.sampleRate*sec), b=ac.createBuffer(1,n,ac.sampleRate), d=b.getChannelData(0); let b0=0,b1=0,b2=0;
+    let l=0; for(let i=0;i<n;i++){ const w=Math.random()*2-1; if(kind==='brown'){ l=(l+.02*w)/1.02; d[i]=l*3.5; } else if(kind==='pink'){ b0=.99765*b0+w*.099; b1=.963*b1+w*.2965; b2=.57*b2+w*1.0526; d[i]=(b0+b1+b2+w*.1848)*.11; } else d[i]=w; } return b; }
+  function impulse(sec){ const n=Math.floor(ac.sampleRate*sec), b=ac.createBuffer(2,n,ac.sampleRate); for(let c=0;c<2;c++){ const d=b.getChannelData(c); for(let i=0;i<n;i++) d[i]=(Math.random()*2-1)*Math.pow(1-i/n,2.8); } return b; }
+  const out=(t,pan)=>{ if(!ac.createStereoPanner) return t; const p=ac.createStereoPanner(); p.pan.value=pan; p.connect(t); return p; };
+  function init(){
+    ac=new (window.AudioContext||window.webkitAudioContext)();
+    const lim=ac.createDynamicsCompressor(); lim.threshold.value=-6; lim.ratio.value=8; lim.connect(ac.destination);
+    master=ac.createGain(); master.gain.value=muted?0:vol*vol*GAIN; master.connect(lim);
+    reverb=ac.createConvolver(); reverb.buffer=impulse(2.6); const rv=ac.createGain(); rv.gain.value=.35; reverb.connect(rv).connect(master);
+    const mkb=(g,wet)=>{ const n=ac.createGain(); n.gain.value=g; n.connect(master); if(wet){ const s=ac.createGain(); s.gain.value=wet; n.connect(s).connect(reverb);} return n; };
+    bus.music=mkb(.7,.5); bus.fx=mkb(.8,.35); bus.amb=mkb(.5,.05); bus.ui=mkb(.6,.15);
+    bus.musicIn=ac.createBiquadFilter(); bus.musicIn.type='lowpass'; bus.musicIn.frequency.value=2700; bus.musicIn.connect(bus.music);
+    noiseBuf=noise(2); pinkBuf=noise(4,'pink'); brownBuf=noise(4,'brown');
+    rainSound(); cityAmbience(); birds(); startMusic();
+  }
+  /* ฝน (ทำใหม่ให้นุ่มหู):
+     - เสียง "ซ่า" 2 สาย ซ้าย/ขวา ใช้ pink noise ตัดเสียงแหลมออก (low-pass 1.5 kHz) → นุ่มเหมือนฝนนอกหน้าต่าง
+     - แต่ละสายดังเบาสลับกันช้าๆ ให้รู้สึกโล่งและมีชีวิต
+     - เสียงทุ้มต่ำเบาๆ เป็นเนื้อฝน + หยดน้ำ "ต๊อก" นุ่มๆ บนกระจกนานๆ ครั้ง
+     ดังตามปริมาณฝนของเมือง (ฝนตก > ฝนปรอย > ไม่มี) และค่อยๆ หายตอนแดดออก */
+  function layer(buf,pan,hp,lp){ const s=ac.createBufferSource(); s.buffer=buf; s.loop=true; s.start(0,Math.random()*3);
+    const h=ac.createBiquadFilter(); h.type='highpass'; h.frequency.value=hp; const l=ac.createBiquadFilter(); l.type='lowpass'; l.frequency.value=lp; l.Q.value=.3;
+    const g=ac.createGain(); g.gain.value=0; s.connect(h).connect(l).connect(g).connect(out(bus.amb,pan)); return g; }
+  function rainSound(){
+    const L=layer(pinkBuf,-.6,250,1500), Rr=layer(pinkBuf,.6,250,1400), body=layer(brownBuf,0,40,320);
+    (function upd(){ const lv=weatherLevel(), t=ac.currentTime;
+      L.gain.setTargetAtTime(lv*(.15+.04*Math.sin(t*.13)),t,1.5);
+      Rr.gain.setTargetAtTime(lv*(.15+.04*Math.sin(t*.11+2)),t,1.5);
+      body.gain.setTargetAtTime(lv*.12,t,1.5);
+      if(Math.random()<lv*.5){ const tt=t+Math.random()*.4, b=ac.createBufferSource(); b.buffer=noiseBuf; const bp=ac.createBiquadFilter(); bp.type='bandpass'; bp.frequency.value=R2(800,1500); bp.Q.value=4;
+        const gg=ac.createGain(); gg.gain.setValueAtTime(0,tt); gg.gain.linearRampToValueAtTime(.03*lv,tt+.004); gg.gain.exponentialRampToValueAtTime(.0001,tt+.09);
+        b.connect(bp).connect(gg).connect(out(bus.amb,R2(-.7,-.1))); b.start(tt,Math.random(),.1); }
+      setTimeout(upd,400); })();
+  }
+  /* บรรยากาศแต่ละเมือง: ลมหนาว (หมู่บ้านหิมะ) / เสียงเมืองฮัมเบาๆ (นีออน) / กระดิ่งลม (ซากุระ) */
+  function cityAmbience(){
+    const wind=layer(brownBuf,.2,60,420), hum=layer(brownBuf,-.2,30,140);
+    (function upd(){ const t=ac.currentTime, x=Math.random();
+      wind.gain.setTargetAtTime(stage===3 ? (.05+x*.07)*(1-theme*.5) : 0, t, 2);
+      hum.gain.setTargetAtTime(stage===1 ? .06*(1-theme*.6) : 0, t, 2);
+      setTimeout(upd,R2(3000,7000)); })();
+    (function chime(){ if(stage===2 && Math.random()<.8){ [2093,2637,3136].slice(0,2+Math.floor(Math.random()*2)).forEach((f,i)=>{ const tt=ac.currentTime+.05+i*R2(.15,.3), o=ac.createOscillator(), g=ac.createGain();
+        o.frequency.value=f*R2(.995,1.005); g.gain.setValueAtTime(0,tt); g.gain.linearRampToValueAtTime(.025,tt+.005); g.gain.exponentialRampToValueAtTime(.0001,tt+1.6); o.connect(g).connect(out(bus.fx,R2(.2,.7))); o.start(tt); o.stop(tt+1.7); }); }
+      setTimeout(chime,R2(6000,13000)); })();
+  }
+  /* เสียงประกายตอนของที่ระลึกผุดขึ้นมา */
+  function sparkle(){ if(!ac) return; [1568,2093,2637,3136].forEach((f,i)=>{ const t=ac.currentTime+.02+i*.07, o=ac.createOscillator(), g=ac.createGain(); o.frequency.value=f;
+    g.gain.setValueAtTime(0,t); g.gain.linearRampToValueAtTime(.03,t+.004); g.gain.exponentialRampToValueAtTime(.0001,t+.6); o.connect(g).connect(out(bus.fx,R2(-.3,.3))); o.start(t); o.stop(t+.65); }); }
+  /* ถึงงานวันเกิด: กล่องดนตรีเล่น Happy Birthday เบาๆ หนึ่งรอบ (ทำนองเป็นสาธารณสมบัติ) */
+  function birthday(){
+    if(!ac) return;
+    const tune=[['G5',.75],['G5',.25],['A5',1],['G5',1],['C6',1],['B5',2],['G5',.75],['G5',.25],['A5',1],['G5',1],['D6',1],['C6',2],
+                ['G5',.75],['G5',.25],['G6',1],['E6',1],['C6',1],['B5',1],['A5',2],['F6',.75],['F6',.25],['E6',1],['C6',1],['D6',1],['C6',3]];
+    const beat=.45; let t=ac.currentTime+1;
+    bus.music.gain.setTargetAtTime(.25,ac.currentTime,.5); setTimeout(()=>bus.music.gain.setTargetAtTime(.7,ac.currentTime,1.5),(tune.reduce((a,n)=>a+n[1],0)*beat+2)*1000);
+    for(const [n,d] of tune){ const f=freq(n);
+      [[1,.06],[3,.016],[4.2,.008]].forEach(([m,v])=>{ const o=ac.createOscillator(), g=ac.createGain(); o.frequency.value=f*m;
+        g.gain.setValueAtTime(0,t); g.gain.linearRampToValueAtTime(v,t+.004); g.gain.exponentialRampToValueAtTime(.0001,t+(m===1?1.4:.5)); o.connect(g).connect(out(bus.fx,R2(-.2,.2))); o.start(t); o.stop(t+1.5); });
+      t+=d*beat; }
+  }
+  /* นกร้องหลังฝนหยุด */
+  function birds(){
+    (function b(){ if(theme>.6 && Math.random()<.7){ const t0=ac.currentTime+.05, n=2+Math.floor(Math.random()*3), base=R2(2400,3800), o2=out(bus.fx,R2(-.8,-.2));
+        for(let i=0;i<n;i++){ const t=t0+i*R2(.1,.16), o=ac.createOscillator(), g=ac.createGain(), f0=base*R2(.9,1.1);
+          o.frequency.setValueAtTime(f0,t); o.frequency.exponentialRampToValueAtTime(f0*1.5,t+.05); g.gain.setValueAtTime(0,t); g.gain.linearRampToValueAtTime(.04,t+.01); g.gain.exponentialRampToValueAtTime(.0001,t+.09);
+          o.connect(g).connect(o2); o.start(t); o.stop(t+.1); } }
+      setTimeout(b,R2(4000,11000)); })();
+  }
+  function pageTurn(){ if(!ac) return; const t=ac.currentTime, s=ac.createBufferSource(); s.buffer=noiseBuf;
+    const bp=ac.createBiquadFilter(); bp.type='bandpass'; bp.frequency.setValueAtTime(1800,t); bp.frequency.linearRampToValueAtTime(3200,t+.25); bp.Q.value=.8;
+    const g=ac.createGain(); g.gain.setValueAtTime(0,t); g.gain.linearRampToValueAtTime(.04,t+.06); g.gain.exponentialRampToValueAtTime(.0001,t+.3); s.connect(bp).connect(g).connect(bus.fx); s.start(t,Math.random(),.35); }
+  function yawn(){ if(!ac) return; const t=ac.currentTime+.1, o=ac.createOscillator(), g=ac.createGain(); o.type='triangle';
+    o.frequency.setValueAtTime(900,t); o.frequency.linearRampToValueAtTime(1300,t+.25); o.frequency.linearRampToValueAtTime(700,t+.7);
+    g.gain.setValueAtTime(0,t); g.gain.linearRampToValueAtTime(.025,t+.1); g.gain.exponentialRampToValueAtTime(.0001,t+.8); o.connect(g).connect(bus.fx); o.start(t); o.stop(t+.85); }
+  /* เสียงกดปุ่ม: ป๊อปนุ่มๆ แบบฟองน้ำ */
+  function blip(f0,f1,t,v,dur){ const o=ac.createOscillator(), g=ac.createGain(); o.type='sine'; o.frequency.setValueAtTime(f0,t); o.frequency.exponentialRampToValueAtTime(f1,t+dur*.8);
+    g.gain.setValueAtTime(0,t); g.gain.linearRampToValueAtTime(v,t+.004); g.gain.exponentialRampToValueAtTime(.0001,t+dur); o.connect(g).connect(bus.ui); o.start(t); o.stop(t+dur+.02); }
+  function click(kind){
+    unlock(); if(!ac) return; const t=ac.currentTime+.005;
+    if(kind==='start'){ blip(880,1320,t,.07,.12); blip(1320,1760,t+.09,.06,.16); }
+    else if(kind==='pause'){ blip(1320,990,t,.06,.12); blip(990,660,t+.08,.05,.15); }
+    else if(kind==='plus') blip(700,1200,t,.06,.09);
+    else if(kind==='minus') blip(1000,600,t,.06,.09);
+    else if(kind==='tab') blip(1100,700,t,.06,.1);
+    else if(kind==='on'){ blip(1046,1568,t,.06,.1); }
+    else if(kind==='off'){ blip(1568,1046,t,.05,.1); }
+    else blip(900,500,t,.06,.1);
+  }
+
+  /* ====== เพลง: lo-fi ฝนตก 66 BPM ======
+     เปียโนไฟฟ้านุ่มๆ คอร์ด Fmaj7 – Em7 – Dm7 – Cmaj7 (วนแบบสบายๆ) + เบส + กลองแปรงเบามาก
+     ทำนองแต่งไว้ 3 ท่อน สลับกับช่วงที่มีแค่คอร์ด */
+  function epiano(f,t,vel,dur,pan){
+    const car=ac.createOscillator(), mod=ac.createOscillator(), mg=ac.createGain(), g=ac.createGain();
+    car.frequency.value=f; mod.frequency.value=f; mg.gain.setValueAtTime(f*1,t); mg.gain.exponentialRampToValueAtTime(f*.06,t+.9);
+    mod.connect(mg).connect(car.frequency);
+    g.gain.setValueAtTime(0,t); g.gain.linearRampToValueAtTime(vel,t+.01); g.gain.exponentialRampToValueAtTime(vel*.35,t+.5); g.gain.exponentialRampToValueAtTime(.0001,t+Math.max(1,dur)+1.3);
+    car.connect(g).connect(out(bus.musicIn,pan)); car.start(t); mod.start(t); car.stop(t+dur+1.5); mod.stop(t+dur+1.5);
+  }
+  function bass(f,t,dur){ const o=ac.createOscillator(), g=ac.createGain(); o.type='triangle'; o.frequency.value=f; g.gain.setValueAtTime(0,t); g.gain.linearRampToValueAtTime(.11,t+.03); g.gain.exponentialRampToValueAtTime(.0005,t+dur); o.connect(g).connect(bus.musicIn); o.start(t); o.stop(t+dur+.05); }
+  function brush(t,v){ const s=ac.createBufferSource(); s.buffer=noiseBuf; const bp=ac.createBiquadFilter(); bp.type='bandpass'; bp.frequency.value=5000; bp.Q.value=.6;
+    const g=ac.createGain(); g.gain.setValueAtTime(0,t); g.gain.linearRampToValueAtTime(v,t+.02); g.gain.exponentialRampToValueAtTime(.0001,t+.18); s.connect(bp).connect(g).connect(out(bus.music,.2)); s.start(t,Math.random(),.2); }
+  function softKick(t){ const o=ac.createOscillator(), g=ac.createGain(); o.frequency.setValueAtTime(80,t); o.frequency.exponentialRampToValueAtTime(45,t+.15); g.gain.setValueAtTime(.09,t); g.gain.exponentialRampToValueAtTime(.0001,t+.3); o.connect(g).connect(bus.music); o.start(t); o.stop(t+.32); }
+  const BPM=66, BEAT=60/BPM, BAR=BEAT*4;
+  const PROG=[
+    {b:'F2',c:['A3','C4','E4','G4']},{b:'E2',c:['G3','B3','D4','E4']},{b:'D2',c:['F3','A3','C4','E4']},{b:'C2',c:['E3','G3','B3','D4']},
+    {b:'F2',c:['A3','C4','E4','G4']},{b:'E2',c:['G3','B3','D4','E4']},{b:'D2',c:['F3','A3','C4','E4']},{b:'G2',c:['F3','B3','D4','G4']},
+  ];
+  const MEL=[
+    [[[0,1.5,'E5'],[1.5,.5,'D5'],[2,2,'C5']],[[0,3,'B4']],[[0,1,'A4'],[1,1,'C5'],[2,2,'D5']],[[0,3,'G4']],
+     [[0,1.5,'A4'],[1.5,.5,'C5'],[2,1,'E5'],[3,1,'D5']],[[0,2,'B4'],[2,2,'G4']],[[0,1,'F4'],[1,1,'A4'],[2,2,'E5']],[[0,3,'D5']]],
+    [[[0,2,'G5'],[2,1,'E5'],[3,1,'C5']],[[0,2,'D5'],[2,2,'B4']],[[0,1,'C5'],[1,1,'E5'],[2,2,'A4']],[[0,4,'G4']],
+     [[0,1,'C5'],[1,1,'E5'],[2,1.5,'G5'],[3.5,.5,'E5']],[[0,2,'D5'],[2,2,'G4']],[[0,1.5,'A4'],[1.5,.5,'C5'],[2,2,'E5']],[[0,4,'D5']]],
+    [[[0,4,'C5']],[[0,2,'B4'],[2,2,'G4']],[[0,4,'A4']],[[0,2,'G4'],[2,2,'E4']],[[0,4,'A4']],[[0,2,'G4'],[2,2,'B4']],[[0,4,'A4']],[[0,2,'G4'],[2,2,'D5']]],
+  ];
+  let bar=0, sec=-1, lastMel=-1, count=0, next=0;
+  const hum=()=>R2(-.01,.01);
+  function nextSection(){ count++; if(count===1||Math.random()<.4) return -1; let m; do{ m=Math.floor(Math.random()*MEL.length);}while(m===lastMel); return lastMel=m; }
+  function scheduleBar(t){
+    if(bar===0) sec=nextSection();
+    const c=PROG[bar], sw=BEAT*.15;
+    bass(freq(c.b),t,BEAT*1.8); bass(freq(c.b),t+2*BEAT,BEAT*1.6);
+    c.c.forEach((n,i)=>epiano(freq(n),t+i*.02+hum(),.075,BEAT*1.8,R2(-.3,.3)));
+    if(Math.random()<.5) c.c.slice(1).forEach((n,i)=>epiano(freq(n),t+2.5*BEAT+sw+i*.015,.045,BEAT,R2(-.2,.2)));
+    softKick(t); softKick(t+2.5*BEAT+sw); brush(t+BEAT,.03); brush(t+3*BEAT,.03);
+    for(let i=0;i<8;i++) brush(t+i*BEAT/2+(i%2?sw:0),.008);
+    if(sec>=0) MEL[sec][bar].forEach(([b,d,n],i)=>epiano(freq(n),t+b*BEAT+(b%1?sw:0)+hum(),(i===0?.11:.095)*R2(.9,1.05),d*BEAT,R2(.05,.3)));
+    bar=(bar+1)%PROG.length;
+  }
+  function startMusic(){ next=ac.currentTime+1.2; setInterval(()=>{ while(next<ac.currentTime+2.5){ scheduleBar(next); next+=BAR; } },250); }
+  function chime(){ if(!ac) return; [1568,1976,2349,3136].forEach((f,i)=>{ const t=ac.currentTime+.05+i*.16, o=ac.createOscillator(), g=ac.createGain(); o.frequency.value=f;
+    g.gain.setValueAtTime(0,t); g.gain.linearRampToValueAtTime(.05,t+.005); g.gain.exponentialRampToValueAtTime(.0001,t+1.4); o.connect(g).connect(bus.fx); o.start(t); o.stop(t+1.5); }); }
+
+  const box=$('sound'), slider=$('vol'), btn=$('mute');
+  function apply(){ box.classList.toggle('muted',muted); btn.setAttribute('aria-label',muted?'Turn sound on':'Mute sound');
+    slider.value=Math.round(vol*100); slider.style.backgroundSize=Math.round(vol*100)+'% 100%';
+    if(master) master.gain.setTargetAtTime(muted?0:vol*vol*GAIN,ac.currentTime,.08); save(); }
+  function unlock(){ try{ if(!ac) init(); if(ac.state==='suspended') ac.resume(); }catch(e){} }
+  function toggleMute(){ unlock(); muted=!muted; if(!muted&&vol<.05) vol=.5; apply(); if(!muted) click('on'); }
+  btn.onclick=toggleMute;
+  slider.oninput=()=>{ unlock(); vol=slider.value/100; muted=vol===0; apply(); };
+  addEventListener('pointerdown',unlock,{once:true}); addEventListener('keydown',unlock,{once:true});
+  apply();
+  return {unlock,chime,toggleMute,pageTurn,yawn,click,sparkle,birthday};
+})();
+
+resize();
+setMode('focus');
+requestAnimationFrame(frame);
+/* PART 4 — ติดตั้งเป็นแอป (PWA) */
+if('serviceWorker' in navigator && location.protocol.startsWith('http')){ addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(()=>{})); }
+let installEvt=null; const installBtn=document.getElementById('install');
+addEventListener('beforeinstallprompt', e => { e.preventDefault(); installEvt=e; installBtn.hidden=false; });
+installBtn.onclick = async () => { if(!installEvt) return; installEvt.prompt(); await installEvt.userChoice.catch(()=>{}); installEvt=null; installBtn.hidden=true; };
+addEventListener('appinstalled', () => { installBtn.hidden=true; });
+</script>
+</body>
+</html>
