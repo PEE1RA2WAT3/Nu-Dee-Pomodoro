@@ -480,15 +480,17 @@ function buildInterior(){
     counterC=mk(W,H); const gc=counterC.getContext('2d');
     gc.fillStyle='#8a5a3e'; gc.fillRect(rx,ct,W-rx,gY-ct); gc.fillStyle='#e8e2d6'; gc.fillRect(rx-1,ct-2,W-rx+1,2);
     gc.fillStyle='#6e4530'; for(let x=rx+4;x<W;x+=8) gc.fillRect(x,ct+3,1,gY-ct-5);
-    const mx=rx+23;   // เครื่องชงกาแฟ + แก้ว (ขยับไปทางขวา เว้นที่ให้ชุดเกราะ)
+    const mx=rx+4;   // เครื่องชงกาแฟ + แก้ว
     gc.fillStyle='#c7d3de'; gc.fillRect(mx,ct-12,9,10); gc.fillStyle='#9fb0c0'; gc.fillRect(mx,ct-12,9,2); gc.fillStyle='#3a4656'; gc.fillRect(mx+3,ct-7,3,2); gc.fillStyle='#ffffff'; gc.fillRect(mx+3,ct-4,3,2);
-    gc.fillStyle='#ffffff'; gc.fillRect(rx+2,ct-4,3,3); gc.fillStyle='#4f9de0'; gc.fillRect(rx+2,ct-3,3,1);
+    gc.fillStyle='#ffffff'; gc.fillRect(rx+16,ct-4,3,3); gc.fillStyle='#4f9de0'; gc.fillRect(rx+16,ct-3,3,1);
     // ตำแหน่งชุดเกราะ: ระหว่างแก้วกาแฟกับหน้าปัดนาฬิกา
-    armorP={x:rx+13,y:ct+3}; katP={x:rx-9,y:gY+1};
+    katP={x:rx-9,y:gY+1};
     // กรอบรูปหนูบนผนัง
     const fx=Math.round((rx+W)/2)-6, fy=Math.round(H*.18); g.fillStyle='#8a5a3e'; g.fillRect(fx-1,fy-1,14,12); g.fillStyle='#e8f2fa'; g.fillRect(fx,fy,12,10); g.fillStyle='#f7a8c8'; ell(g,fx+6,fy+6,3,2); disc(g,fx+3,fy+3,1); disc(g,fx+9,fy+3,1);
   }
-  if(portrait){ armorP={x:W-14,y:H-5}; katP={x:11,y:H-5}; }   // มือถือ: ยืนบนพื้นข้างหน้าต่าง
+  // ชุดเกราะลอยอยู่บนแท่นวงกลมเรืองแสง: คอมอยู่บนพื้นฝั่งซ้ายใต้หน้าต่าง มือถืออยู่มุมขวาล่าง
+  armorP = portrait ? {x:W-14,y:H-4} : {x:Math.max(12,x0+8),y:Math.min(H-3,gY+6)};
+  if(portrait) katP={x:11,y:H-5};
   // ขอบกระจกสำหรับหน้าต่างอัจฉริยะ เรียงตามมุมรอบจุดกลาง จะได้วิ่งแสงวนรอบได้
   hudEdge=[]; { const cx=(x0+x1)/2, cy=(y0+y1)/2;
     for(let y=y0;y<y1;y++) for(let x=x0;x<x1;x++) if(inWin(x,y) && (!inWin(x-1,y)||!inWin(x+1,y)||!inWin(x,y-1)||!inWin(x,y+1))) hudEdge.push([x,y,Math.atan2(y-cy,x-cx)]);
@@ -710,7 +712,7 @@ function buildSouvenirs(){
   souvArt.umbrella=art(7,13,g=>{ g.fillStyle='#4f9de0'; g.fillRect(1,0,5,1); g.fillRect(0,1,7,2); g.fillStyle='#7cc6f2'; g.fillRect(1,1,1,1); g.fillRect(4,1,1,1);
     g.fillStyle='#2f6fb0'; g.fillRect(0,3,1,1); g.fillRect(3,3,1,1); g.fillRect(6,3,1,1); g.fillStyle='#8a5a3e'; g.fillRect(3,3,1,9); g.fillRect(4,11,1,1); g.fillRect(5,10,1,1); });
   // ชุดเกราะไฮเทค (ออกแบบเอง): เกราะขาว-ฟ้า หมวกมีหูกลมๆ แบบหนู ไวเซอร์กับแกนพลังงานเรืองแสง
-  souvArt.armor=art(16,25,g=>{ const rows=[
+  souvArt.armor=art(16,23,g=>{ const rows=[
     "..OOO......OOO..",
     ".OLLLO....OLLLO.",
     ".OLBLOOOOOOLBLO.",
@@ -733,9 +735,7 @@ function buildSouvenirs(){
     ".....OWOOWO.....",
     ".....OBOOBO.....",
     "....OODOODOO....",
-    "....OOOOOOOO....",
-    ".....SSSSSS.....",
-    "...SSSSSSSSSS..."];
+    "....OOOOOOOO...."];
     const col={O:'#22283f',W:'#eef5fc',L:'#a8d4f2',B:'#4f9de0',D:'#2f6fb0',V:'#3ff0ff',C:'#ff6fd8',G:'#5a6488',S:'#3a4656'};
     rows.forEach((r,y)=>[...r].forEach((c,x)=>{ if(c==='.') return; g.fillStyle=col[c]; g.fillRect(x,y,1,1); })); });
   souvArt.vase=art(9,14,g=>{ g.fillStyle='#5a3a2e'; g.fillRect(4,0,1,8); g.fillRect(2,2,2,1); g.fillRect(5,4,3,1); g.fillRect(1,5,3,1);
@@ -787,8 +787,20 @@ function drawSouvenirs(front){
    ครึ่งวงที่อยู่ "หลัง" เกราะวาดก่อนตัวเกราะ ครึ่งวงที่อยู่ "หน้า" วาดทีหลัง เลยดูเหมือนวนรอบตัวจริงๆ */
 function drawArmor(){
   if(!armorP || souv[1].t<0) return;
-  const s=popScale(souv[1].t), on=Math.min(1,(time-souv[1].t)/1.5), night=1-theme, ax=armorP.x, ay=armorP.y, top=ay-25;
-  const bob=Math.round(Math.sin(time*1.3)*.6), N=16, spin=running?2.4:1.4;
+  const s=popScale(souv[1].t), on=Math.min(1,(time-souv[1].t)/1.5), night=1-theme, ax=armorP.x, by=armorP.y;
+  const lift=Math.round(3+Math.sin(time*1.2)*1.5), ay=by-3-lift, top=ay-23, bob=0, N=16, spin=running?2.4:1.4;
+  // แท่นวงกลม: ตัวฐานโลหะ + ขอบเรืองแสงมีจุดสว่างวิ่งวน + ลำแสงพุ่งขึ้นเป็นหลอดแก้ว
+  ctx.globalAlpha=on; ctx.fillStyle='#22283f'; ell(ctx,ax,by+1,9,2); ctx.fillStyle='#3a4a70'; ell(ctx,ax,by,8,2); ctx.fillStyle='#5a6488'; ell(ctx,ax,by-1,6,1);
+  ctx.globalCompositeOperation='lighter'; ctx.globalAlpha=on*(.35+.15*Math.sin(time*2.2))*(.6+.4*night); ctx.drawImage(glowSprite(9,'#3ff0ff'),ax-9,by-1-9); ctx.globalCompositeOperation='source-over';
+  for(let i=0;i<24;i++){ const a=i/24*Math.PI*2, d=((i-time*10)%24+24)%24; ctx.globalAlpha=on*(d<3?1:.55); ctx.fillStyle=d<1?'#ffffff':'#3ff0ff'; ctx.fillRect(Math.round(ax+Math.cos(a)*8),Math.round(by+Math.sin(a)*2),1,1); }
+  const BH=Math.min(36, by-4);
+  for(let y=1;y<BH;y++){ const h=y/BH, w=Math.round(7-h*1.2), sh=.5+.5*Math.sin(time*3-y*.35);
+    ctx.globalAlpha=on*.2*(1-h)*(.75+.25*sh); ctx.fillStyle='#5fe8ff'; ctx.fillRect(ax-w,by-1-y,w*2+1,1);
+    ctx.globalAlpha=on*.45*(1-h*.8); ctx.fillStyle='#bff8ff'; ctx.fillRect(ax-w-1,by-1-y,1,1); ctx.fillRect(ax+w+1,by-1-y,1,1); }
+  for(let i=0;i<7;i++){ const y=(time*10+i*5.3)%BH, x=Math.round(ax+Math.sin(i*2.3+time*1.5)*5); ctx.globalAlpha=on*(1-y/BH)*.9; ctx.fillStyle=i%3?'#ffffff':'#3ff0ff'; ctx.fillRect(x,Math.round(by-2-y),1,1); }
+  // เงาของเกราะบนแท่น (เล็กลงเมื่อลอยสูง)
+  ctx.globalAlpha=on*.35; ctx.fillStyle='#1b2b4d'; ell(ctx,ax,by-1,Math.max(2,6-lift),1);
+  ctx.globalAlpha=1;
   // ออร่า: วงแหวนจุด 2 วงหมุนสวนทางกัน (ขึ้นลงช้าๆ) + ประกายลอยขึ้นเป็นเกลียว ใช้สีเข้มพอให้เห็นบนผนังสีอ่อน
   const aura=front=>{
     for(let ring=0;ring<2;ring++){ const ry2=ay-8-ring*9+Math.round(Math.sin(time*1.1+ring*2)*3), dir=ring?-1:1;
@@ -1004,11 +1016,13 @@ $('reset').onclick=()=>setMode(mode);
 $('skip').onclick=()=>advance(false);
 $('minus').onclick=()=>adjust(-1); $('plus').onclick=()=>adjust(1);
 autoBox.onchange=()=>{ Sound.click(autoBox.checked?'on':'off'); render(); };
-// จอแนวนอนเตี้ยๆ (มือถือตะแคง): ให้หน้าปัดอยู่ตรงช่องว่างระหว่างปุ่ม reset กับ skip
+// จอแนวนอน (มือถือตะแคงและคอม): ให้หน้าปัดอยู่ตรงช่องว่างระหว่างปุ่ม reset กับ skip
 const shortLand=matchMedia('(max-height:520px) and (orientation:landscape)');
+const wideLay=matchMedia('(min-aspect-ratio:4/3)');   // คอม/จอกว้าง: หน้าปัดอยู่ตรงช่องระหว่าง reset กับ skip เหมือนกัน
 function alignDial(){ const d=document.querySelector('.dial'); d.style.transform='';
-  if(!shortLand.matches) return; const r=$('reset').getBoundingClientRect(), k=$('skip').getBoundingClientRect(), dr=d.getBoundingClientRect();
-  d.style.transform=`translateX(${Math.round((r.right+k.left)/2-(dr.left+dr.width/2))}px)`; }
+  if(!shortLand.matches && !wideLay.matches) return; const r=$('reset').getBoundingClientRect(), k=$('skip').getBoundingClientRect(), dr=d.getBoundingClientRect();
+  const cx = shortLand.matches ? (r.right+k.left)/2 : (r.left+r.right)/2;   // มือถือแนวนอน: ช่องระหว่าง reset กับ skip / คอม: ตรงกลางปุ่ม reset
+  d.style.transform=`translateX(${Math.round(cx-(dr.left+dr.width/2))}px)`; }
 addEventListener('resize',()=>setTimeout(alignDial,150)); addEventListener('orientationchange',()=>{ setTimeout(alignDial,400); setTimeout(alignDial,1000); });
 document.fonts && document.fonts.ready.then(alignDial); setTimeout(alignDial,300);
 for(const ev of ['click','keyup']) document.addEventListener(ev,()=>setTimeout(alignDial,30));
