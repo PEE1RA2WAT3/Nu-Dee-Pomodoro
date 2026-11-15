@@ -82,8 +82,7 @@
     background:rgba(14,22,42,.95);border:2px solid var(--cream);font-size:7px;line-height:1.8;text-align:left;text-shadow:none;opacity:0;visibility:hidden;transition:opacity .15s;pointer-events:none}
   .tip::after{content:"";position:absolute;top:100%;left:var(--arrow,14px);margin-left:-5px;border:5px solid transparent;border-top-color:var(--cream)}
   @media (hover:hover){.auto:hover .tip{opacity:1;visibility:visible}}
-  /* มือถือ/จอสัมผัส: คำอธิบายขึ้นเป็นกล่องกลางจอ ไม่ทับปุ่ม ไม่โดนขอบจอหรือ Dynamic Island ตัด แตะที่ไหนก็ปิด */
-  @media (hover:none){ .tip{position:fixed;left:50% !important;top:50%;bottom:auto;transform:translate(-50%,-50%);max-width:min(300px,76vw);font-size:8px;padding:12px 14px;box-shadow:4px 4px 0 rgba(10,16,34,.55)} .tip::after{display:none} } .auto:has(input:focus-visible) .tip,.auto.show .tip{opacity:1;visibility:visible}
+  .tip{box-shadow:4px 4px 0 rgba(10,16,34,.55)} .auto:has(input:focus-visible) .tip,.auto.show .tip{opacity:1;visibility:visible}
   .sessions{display:flex;align-items:center;gap:8px;padding:6px 10px;background:rgba(22,35,63,.5);font-size:7px;text-shadow:2px 2px 0 var(--ink)}
   .dots{display:flex;gap:6px}
   .dots i{width:10px;height:13px;background:var(--panel);clip-path:polygon(50% 0,100% 55%,100% 85%,80% 100%,20% 100%,0 85%,0 55%);outline:none;position:relative}
@@ -124,7 +123,9 @@
     button{padding:7px 9px;font-size:8px} .controls{gap:8px} .controls .primary{min-width:84px;font-size:9px;padding:8px 11px}
     .auto{font-size:7px} .sessions{font-size:6px}
     .badge{margin-bottom:9px} .tabs{margin-bottom:2px}
-    .tip{max-width:min(300px,56vw);font-size:7px;line-height:1.7}
+    /* มือถือแนวนอน: กล่องคำพูดอยู่ทางซ้ายของ auto run หางแหลมชี้ไปทางขวา */
+    .tip{bottom:auto;top:50%;left:auto !important;right:calc(100% + 12px);transform:translateY(-50%);max-width:min(380px,50vw);font-size:7px;line-height:1.7}
+    .tip::after{top:50%;left:100% !important;margin:-5px 0 0;border-top-color:transparent;border-left-color:var(--cream)}
     .sound{top:max(8px,env(safe-area-inset-top));right:auto;left:calc(8px + env(safe-area-inset-left));padding:4px 8px 4px 4px} .sound svg{width:18px;height:18px} #vol{width:64px}
   }
 </style>
@@ -206,11 +207,20 @@ const mk=(w,h)=>{const c=document.createElement('canvas');c.width=w;c.height=h;r
 const inWin=(x,y)=>x>=win.x0&&x<win.x1&&y>=win.y0&&y<win.y1&&!(y<win.y0+win.arch && Math.hypot(x-(win.x0+win.x1)/2,(y-win.y0-win.arch)*(win.x1-win.x0)/(2*win.arch))>(win.x1-win.x0)/2);
 
 /* ---------- ขนาดจอ ---------- */
+/* iPhone/iPad: Safari บางเวอร์ชัน (รวมแอปที่ติดตั้งลงหน้าจอโฮม) รายงานความสูงจอสั้นกว่าจริง ทำให้ขอบล่างลอย
+   ถ้าเป็นอุปกรณ์ iOS และหน้าแอปกว้างเต็มจอ ให้ใช้ขนาดจอจริงไปเลย */
+function fullScreenIOS(w,h){
+  if(navigator.standalone) return true;
+  const ios=/iPhone|iPad|iPod/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
+  if(!ios) return false;
+  const a=Math.min(screen.width,screen.height), b=Math.max(screen.width,screen.height);
+  return Math.abs((w>h?b:a)-w)<=2;
+}
 function viewSize(){
   const r=document.querySelector('.fx').getBoundingClientRect();
   const lv=document.getElementById('lvh').getBoundingClientRect().height||0;
   let w=Math.max(r.width,innerWidth), h=Math.max(r.height,innerHeight,lv);
-  if(navigator.standalone){ const a=Math.min(screen.width,screen.height), b=Math.max(screen.width,screen.height);
+  if(fullScreenIOS(w,h)){ const a=Math.min(screen.width,screen.height), b=Math.max(screen.width,screen.height);
     if(w>h){ w=Math.max(w,b); h=Math.max(h,a);} else { w=Math.max(w,a); h=Math.max(h,b);} }
   return [Math.round(w),Math.round(h)];
 }
@@ -1008,9 +1018,9 @@ for(const ev of ['click','keyup']) document.addEventListener(ev,()=>setTimeout(a
   const place=()=>{ tip.style.left='0px'; const r=tip.getBoundingClientRect(), lr=lab.getBoundingClientRect(), L=8+inset('paddingLeft'), Rm=innerWidth-8-inset('paddingRight'); let dx=0;
     if(r.right>Rm) dx=Rm-r.right; if(r.left+dx<L) dx=L-r.left;
     tip.style.left=dx+'px'; tip.style.setProperty('--arrow',Math.max(8,Math.min(r.width-8,lr.width/2-dx))+'px'); };
-  lab.addEventListener('mouseenter',place);
+  lab.addEventListener('mouseenter',()=>{ if(!shortLand.matches) place(); });
   document.addEventListener('touchstart',e=>{ if(!lab.contains(e.target)) lab.classList.remove('show'); },{passive:true});
-  lab.addEventListener('touchstart',()=>{ lab.classList.add('show'); clearTimeout(tt); tt=setTimeout(()=>lab.classList.remove('show'),3000); },{passive:true});
+  lab.addEventListener('touchstart',()=>{ if(!shortLand.matches) place(); lab.classList.add('show'); clearTimeout(tt); tt=setTimeout(()=>lab.classList.remove('show'),3000); },{passive:true});
   addEventListener('resize',()=>lab.classList.remove('show')); }
 document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>setMode(b.dataset.mode));
 // เสียงกดปุ่ม: ปุ่ม start เป็นเสียงกริ๊งขึ้น ปุ่มอื่นเป็นเสียงป๊อปเบาๆ
