@@ -127,6 +127,11 @@
     .tip::after{top:50%;left:100% !important;margin:-5px 0 0;border-top-color:transparent;border-left-color:var(--cream)}
     .sound{top:max(8px,env(safe-area-inset-top));right:auto;left:calc(8px + env(safe-area-inset-left));padding:4px 8px 4px 4px} .sound svg{width:18px;height:18px} #vol{width:64px}
   }
+  /* พิมพ์ตั้งเวลา: คลิกที่ตัวเลขเวลา หรือกดตัวเลขบนคีย์บอร์ดตอนเวลาไม่เดิน */
+  .time{cursor:text} body.running .time{cursor:default}
+  .timein{font-family:inherit;width:5.6ch;text-align:center;color:inherit;background:transparent;border:0;border-bottom:3px dashed currentColor;
+    outline:none;padding:0;margin:0;caret-color:currentColor}
+  .timein::placeholder{color:inherit;opacity:.35}
 </style>
 </head>
 <body>
@@ -970,6 +975,7 @@ for(let i=0;i<TICKS;i++){ const r=document.createElementNS(NS,'rect'); r.setAttr
   r.setAttribute('transform',`rotate(${i*360/TICKS} 60 60)`); r.setAttribute('class','tick'); dimGroup.append(r); ticks.push(r); }
 const fmt=s=>{ s=Math.ceil(s); return String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0'); };
 function render(){
+  document.body.classList.toggle('running',running);
   const t=fmt(remaining); timeEl.textContent=t;
   const lit=Math.ceil((remaining/total)*TICKS-1e-9);
   ticks.forEach((r,i)=>{ const on=i<lit; if(on!==r.classList.contains('on')){ r.classList.toggle('on',on); (on?litGroup:dimGroup).append(r);} });
@@ -985,6 +991,7 @@ function render(){
   keepAwake(running);
 }
 function setMode(m){
+  if(editing) closeEdit(false);
   mode=m; running=false; total=mins[m]*60; remaining=total;
   themeTarget = m==='focus' ? 0 : 1;
   setStage(m==='long' ? 4 : m==='short' ? Math.max(0,(done%4)-1) : done%4);
@@ -993,7 +1000,7 @@ function setMode(m){
   hint.textContent='press start to begin'; hint.classList.add('blink');
   render();
 }
-function start(){ ensureAudio(); if(remaining<=0) return; running=true; speedTarget = mode==='focus' ? 1 : 0; endAt=performance.now()+remaining*1000; render(); }
+function start(){ ensureAudio(); if(editing) closeEdit(true); if(remaining<=0) return; running=true; speedTarget = mode==='focus' ? 1 : 0; endAt=performance.now()+remaining*1000; render(); }
 function pause(){ remaining=Math.max(0,(endAt-performance.now())/1000); running=false; speedTarget = mode==='focus' ? .25 : 0; render(); }
 function advance(sound){
   const finished=mode;
@@ -1010,7 +1017,41 @@ async function keepAwake(on){ try{ if(on&&!wakeLock&&!wakePending&&'wakeLock' in
 document.addEventListener('visibilitychange',()=>{ if(document.visibilityState==='visible'&&running) keepAwake(true); });
 
 const ensureAudio=()=>Sound.unlock(), chime=()=>Sound.chime();
-function adjust(d){ if(running) return; mins[mode]=Math.min(90,Math.max(1,mins[mode]+d)); try{ localStorage.setItem('nudee-rain-mins',JSON.stringify(mins)); }catch(e){} total=remaining=mins[mode]*60; render(); }
+function adjust(d){ if(running) return; mins[mode]=Math.min(Math.max(90,Math.ceil(mins[mode])),Math.max(1,Math.round(mins[mode])+d)); try{ localStorage.setItem('nudee-rain-mins',JSON.stringify(mins)); }catch(e){} total=remaining=mins[mode]*60; render(); }
+
+/* ---------- พิมพ์ตั้งเวลาด้วยคีย์บอร์ด ----------
+   คลิกที่ตัวเลขเวลา (หรือกดตัวเลขตอนเวลาไม่เดิน): "45" = 45 นาที, "1:30" = 1 นาที 30 วินาที, Enter = ตั้ง, Esc = ยกเลิก */
+var editing=false;
+const timeIn=document.createElement('input');
+timeIn.className='time timein'; timeIn.type='text'; timeIn.inputMode='decimal'; timeIn.maxLength=6; timeIn.autocomplete='off'; timeIn.hidden=true;
+timeIn.setAttribute('aria-label','Type minutes, or minutes:seconds');
+timeEl.after(timeIn);
+function openEdit(first){
+  if(running || editing) return;
+  editing=true; timeIn.value=first||''; timeIn.placeholder=fmt(remaining); timeEl.hidden=true; timeIn.hidden=false;
+  timeIn.focus(); const n=timeIn.value.length; timeIn.setSelectionRange(n,n);
+  hint.textContent='type minutes (or m:ss) + enter'; hint.classList.remove('blink');
+}
+function closeEdit(apply){
+  if(!editing) return; editing=false;
+  const v=timeIn.value.trim().replace('.',':'); timeIn.hidden=true; timeEl.hidden=false;
+  let secs=null;
+  if(apply && v){ const m=v.match(/^(\d{1,3})(?::(\d{1,2}))?$/); if(m) secs=parseInt(m[1],10)*60+(m[2]?parseInt(m[2],10):0); }
+  if(secs!==null){
+    secs=Math.min(180*60,Math.max(5,secs));
+    mins[mode]=secs/60; try{ localStorage.setItem('nudee-rain-mins',JSON.stringify(mins)); }catch(e){}
+    total=remaining=secs; Sound.click('on');
+  } else if(apply && v) Sound.click('off');
+  hint.textContent='press start to begin'; hint.classList.add('blink'); render();
+}
+timeEl.addEventListener('click',()=>openEdit(''));
+timeIn.addEventListener('input',()=>{ timeIn.value=timeIn.value.replace(/[^0-9:.]/g,''); });
+timeIn.addEventListener('keydown',e=>{
+  if(e.key==='Enter'){ e.preventDefault(); closeEdit(true); }
+  else if(e.key==='Escape'){ e.preventDefault(); closeEdit(false); }
+  e.stopPropagation();
+});
+timeIn.addEventListener('blur',()=>closeEdit(true));
 startBtn.onclick=()=>running?pause():start();
 $('reset').onclick=()=>setMode(mode);
 $('skip').onclick=()=>advance(false);
@@ -1021,7 +1062,7 @@ const shortLand=matchMedia('(max-height:520px) and (orientation:landscape)');
 const wideLay=matchMedia('(min-aspect-ratio:4/3)');   // คอม/จอกว้าง: หน้าปัดอยู่ตรงช่องระหว่าง reset กับ skip เหมือนกัน
 function alignDial(){ const d=document.querySelector('.dial'); d.style.transform='';
   if(!shortLand.matches && !wideLay.matches) return; const r=$('reset').getBoundingClientRect(), k=$('skip').getBoundingClientRect(), dr=d.getBoundingClientRect();
-  const cx = shortLand.matches ? (r.right+k.left)/2 : (r.left+r.right)/2;   // มือถือแนวนอน: ช่องระหว่าง reset กับ skip / คอม: ตรงกลางปุ่ม reset
+  const br=document.querySelector('.badge').getBoundingClientRect(), cx=(br.left+br.right)/2;   // ให้หน้าปัดอยู่ตรงกลางใต้ป้าย birthday edition
   d.style.transform=`translateX(${Math.round(cx-(dr.left+dr.width/2))}px)`; }
 addEventListener('resize',()=>setTimeout(alignDial,150)); addEventListener('orientationchange',()=>{ setTimeout(alignDial,400); setTimeout(alignDial,1000); });
 document.fonts && document.fonts.ready.then(alignDial); setTimeout(alignDial,300);
@@ -1051,6 +1092,7 @@ addEventListener('keydown',e=>{
   if(e.code==='Space'){ e.preventDefault(); running?pause():start(); Sound.click(running?'start':'pause'); }
   if(e.key==='r'||e.key==='R'){ setMode(mode); Sound.click('pop'); }
   if(e.key==='m'||e.key==='M') Sound.toggleMute();
+  if(/^[0-9]$/.test(e.key) && !running && !e.ctrlKey && !e.metaKey && !e.altKey && e.target.tagName!=='INPUT'){ e.preventDefault(); openEdit(e.key); }
 });
 
 /* ======================================================================
