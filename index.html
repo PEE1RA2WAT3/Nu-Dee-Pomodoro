@@ -1000,7 +1000,7 @@ function setMode(m){
   hint.textContent='press start to begin'; hint.classList.add('blink');
   render();
 }
-function start(){ ensureAudio(); if(editing) closeEdit(true); if(remaining<=0) return; running=true; speedTarget = mode==='focus' ? 1 : 0; endAt=performance.now()+remaining*1000; render(); }
+function start(){ ensureAudio(); if(editing) closeEdit(true); if(remaining<=0) return; running=true; lastCount=Math.ceil(remaining)>3?0:Math.ceil(remaining); speedTarget = mode==='focus' ? 1 : 0; endAt=performance.now()+remaining*1000; render(); }
 function pause(){ remaining=Math.max(0,(endAt-performance.now())/1000); running=false; speedTarget = mode==='focus' ? .25 : 0; render(); }
 function advance(sound){
   const finished=mode;
@@ -1010,7 +1010,11 @@ function advance(sound){
   if(autoBox.checked){ if(finished==='long'){ autoBox.checked=false; hint.textContent='cycle complete! press start'; return; } start(); return; }
   if(sound) hint.textContent = mode==='focus' ? 'break is over. press start' : 'well done! press start for a break';
 }
-setInterval(()=>{ if(!running) return; remaining=Math.max(0,(endAt-performance.now())/1000); if(remaining<=0){ running=false; advance(true); return; } render(); },200);
+let lastCount=0;   // นับถอยหลัง 3-2-1 ก่อนหมดเวลา (เสียงหมดเวลายังเป็นแบบเดิม)
+setInterval(()=>{ if(!running) return; remaining=Math.max(0,(endAt-performance.now())/1000);
+  if(remaining<=0){ running=false; lastCount=0; advance(true); return; }
+  const c=Math.ceil(remaining); if(c<=3 && c>=1 && c!==lastCount && total>4){ lastCount=c; Sound.count(c); }
+  render(); },100);
 
 let wakeLock=null, wakePending=false;
 async function keepAwake(on){ try{ if(on&&!wakeLock&&!wakePending&&'wakeLock' in navigator&&document.visibilityState==='visible'){ wakePending=true; wakeLock=await navigator.wakeLock.request('screen'); wakeLock.addEventListener('release',()=>{wakeLock=null;}); } else if(!on&&wakeLock){ const w=wakeLock; wakeLock=null; await w.release(); } }catch(e){} finally{ wakePending=false; } }
@@ -1245,12 +1249,20 @@ const Sound=(()=>{
     slider.value=Math.round(vol*100); slider.style.backgroundSize=Math.round(vol*100)+'% 100%';
     if(master) master.gain.setTargetAtTime(muted?0:vol*vol*GAIN,ac.currentTime,.08); save(); }
   function unlock(){ try{ if(!ac) init(); if(ac.state==='suspended') ac.resume(); }catch(e){} }
+  // นับถอยหลัง: เสียง "ติ๊ง" แบบกล่องดนตรี (เข้ากับเพลง Happy Birthday) ใสๆ เบาๆ
+  function countTick(n){
+    unlock(); if(!ac) return; const t=ac.currentTime+.01, f=1318.5;   // E6
+    for(const [m,v,d] of [[1,.14,.6],[2.76,.035,.25],[5.4,.012,.12]]){   // โน้ตหลัก + โอเวอร์โทนแบบซี่เหล็กกล่องดนตรี
+      const o=ac.createOscillator(), g=ac.createGain(); o.type='sine'; o.frequency.value=f*m;
+      g.gain.setValueAtTime(0,t); g.gain.linearRampToValueAtTime(v,t+.003); g.gain.exponentialRampToValueAtTime(.0001,t+d);
+      o.connect(g).connect(bus.ui); o.start(t); o.stop(t+d+.05); }
+  }
   function toggleMute(){ unlock(); muted=!muted; if(!muted&&vol<.05) vol=.5; apply(); if(!muted) click('on'); }
   btn.onclick=toggleMute;
   slider.oninput=()=>{ unlock(); vol=slider.value/100; muted=vol===0; apply(); };
   addEventListener('pointerdown',unlock,{once:true}); addEventListener('keydown',unlock,{once:true});
   apply();
-  return {unlock,chime,toggleMute,pageTurn,yawn,click,sparkle,birthday};
+  return {unlock,chime,toggleMute,pageTurn,yawn,click,sparkle,birthday,count:countTick};
 })();
 
 resize();
