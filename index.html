@@ -2,14 +2,13 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 <title>Nu•Dee pomodoro · birthday edition</title>
 <meta name="theme-color" content="#16233f">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Nu•Dee">
 <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABuElEQVR4XmNgGAUDDBipYX+Vdcx/XOa0HV2C1w4WbBpJMRCktjY3B58//uNzBIYDQAam2fsQZSA2yznsNOB6fxy6wQB1HDiEsDmEiRpRQAlACQFsvpfP8WB4OGUHUXYg+x4EQHykUAABjOjAmgZgAGQ5CMBokEOg0QMOUljco1tMCsDqAJiF9ACDKw3AACzO0UNCXE8BrKRWDzXbgeIZFufYQPPkKWBhbLkAbxoAOQRmKTEA5hBkALKc6HIAqhBeqhEoD8DAuCCD4erz82D2j5UnUfjVNrF4LQeBAU8DGA5ADi5ig19b0hCMYQDGB2VTfMU6CGCtKGCaCJTxRIGXczfB1SnsbsOwjypRwPH8NRyjA/FkP4ZZ3x6BMTZAFQdQAvDW1URUtXgBvvwPA3jLAVyAQ08Oq9SPS5jBjK8MwJoIP8za8b9r4RKwJLZEiMtyMHjzAUxVV7aBaUKWg8CApwEUB4B8L5DmgTdd4AUiAgw/nn3CrwYNDHgIoCRCkO/RQoFQgxMFgBIhocpn0IUA1vgGhQLMpaAcgZ4bcOWE6tQyolI+MiAqwf0/dA2l44Ge0IgpcEbBoAUAtTuzlpCUe18AAAAASUVORK5CYII=">
 <style>
@@ -210,6 +209,7 @@ const inWin=(x,y)=>x>=win.x0&&x<win.x1&&y>=win.y0&&y<win.y1&&!(y<win.y0+win.arch
 /* iPhone/iPad: Safari บางเวอร์ชัน (รวมแอปที่ติดตั้งลงหน้าจอโฮม) รายงานความสูงจอสั้นกว่าจริง ทำให้ขอบล่างลอย
    ถ้าเป็นอุปกรณ์ iOS และหน้าแอปกว้างเต็มจอ ให้ใช้ขนาดจอจริงไปเลย */
 function fullScreenIOS(w,h){
+  return false;   // ตอนนี้ไม่วาดใต้แถบสถานะแล้ว (ตั้งค่าแบบ Neon) ขนาดที่ Safari บอกจึงถูกต้อง ไม่ต้องใช้ขนาดจอจริงอีก
   if(navigator.standalone) return true;
   const ios=/iPhone|iPad|iPod/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
   if(!ios) return false;
