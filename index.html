@@ -1119,9 +1119,12 @@ const Sound=(()=>{
     ac=new (window.AudioContext||window.webkitAudioContext)();
     const lim=ac.createDynamicsCompressor(); lim.threshold.value=-6; lim.ratio.value=8; lim.connect(ac.destination);
     master=ac.createGain(); master.gain.value=muted?0:vol*vol*GAIN; master.connect(lim);
+    // เสียงปุ่ม นับถอยหลัง และเสียงหมดเวลา แยกออกมาอีกทาง: ปิดเสียงแล้วยังดังอยู่ (แบบ Neon)
+    alertOut=ac.createGain(); alertOut.gain.value=alertLevel(); alertOut.connect(lim);
     reverb=ac.createConvolver(); reverb.buffer=impulse(2.6); const rv=ac.createGain(); rv.gain.value=.35; reverb.connect(rv).connect(master);
     const mkb=(g,wet)=>{ const n=ac.createGain(); n.gain.value=g; n.connect(master); if(wet){ const s=ac.createGain(); s.gain.value=wet; n.connect(s).connect(reverb);} return n; };
-    bus.music=mkb(.7,.5); bus.fx=mkb(.8,.35); bus.amb=mkb(.5,.05); bus.ui=mkb(.6,.15);
+    bus.music=mkb(.7,.5); bus.fx=mkb(.8,.35); bus.amb=mkb(.5,.05);
+    bus.ui=ac.createGain(); bus.ui.gain.value=.6; bus.ui.connect(alertOut); bus.al=ac.createGain(); bus.al.gain.value=.8; bus.al.connect(alertOut);
     bus.musicIn=ac.createBiquadFilter(); bus.musicIn.type='lowpass'; bus.musicIn.frequency.value=2700; bus.musicIn.connect(bus.music);
     noiseBuf=noise(2); pinkBuf=noise(4,'pink'); brownBuf=noise(4,'brown');
     rainSound(); cityAmbience(); birds(); startMusic();
@@ -1242,12 +1245,14 @@ const Sound=(()=>{
   }
   function startMusic(){ next=ac.currentTime+1.2; setInterval(()=>{ while(next<ac.currentTime+2.5){ scheduleBar(next); next+=BAR; } },250); }
   function chime(){ if(!ac) return; [1568,1976,2349,3136].forEach((f,i)=>{ const t=ac.currentTime+.05+i*.16, o=ac.createOscillator(), g=ac.createGain(); o.frequency.value=f;
-    g.gain.setValueAtTime(0,t); g.gain.linearRampToValueAtTime(.05,t+.005); g.gain.exponentialRampToValueAtTime(.0001,t+1.4); o.connect(g).connect(bus.fx); o.start(t); o.stop(t+1.5); }); }
+    g.gain.setValueAtTime(0,t); g.gain.linearRampToValueAtTime(.05,t+.005); g.gain.exponentialRampToValueAtTime(.0001,t+1.4); o.connect(g).connect(bus.al); o.start(t); o.stop(t+1.5); }); }
 
   const box=$('sound'), slider=$('vol'), btn=$('mute');
+  let alertOut=null;
+  const alertLevel=()=> (muted||vol<.05) ? .25*GAIN : vol*vol*GAIN;   // ปิดเสียง = ดังคงที่ระดับกลางๆ, เปิดเสียง = ตามแถบระดับเสียง
   function apply(){ box.classList.toggle('muted',muted); btn.setAttribute('aria-label',muted?'Turn sound on':'Mute sound');
     slider.value=Math.round(vol*100); slider.style.backgroundSize=Math.round(vol*100)+'% 100%';
-    if(master) master.gain.setTargetAtTime(muted?0:vol*vol*GAIN,ac.currentTime,.08); save(); }
+    if(master) master.gain.setTargetAtTime(muted?0:vol*vol*GAIN,ac.currentTime,.08); if(alertOut) alertOut.gain.setTargetAtTime(alertLevel(),ac.currentTime,.08); save(); }
   function unlock(){ try{ if(!ac) init(); if(ac.state==='suspended') ac.resume(); }catch(e){} }
   // นับถอยหลัง: เสียง "ติ๊ง" แบบกล่องดนตรี (เข้ากับเพลง Happy Birthday) ใสๆ เบาๆ
   function countTick(n){
@@ -1257,7 +1262,7 @@ const Sound=(()=>{
       g.gain.setValueAtTime(0,t); g.gain.linearRampToValueAtTime(v,t+.003); g.gain.exponentialRampToValueAtTime(.0001,t+d);
       o.connect(g).connect(bus.ui); o.start(t); o.stop(t+d+.05); }
   }
-  function toggleMute(){ unlock(); muted=!muted; if(!muted&&vol<.05) vol=.5; apply(); if(!muted) click('on'); }
+  function toggleMute(){ unlock(); muted=!muted; if(!muted&&vol<.05) vol=.5; apply(); click(muted?'off':'on'); }
   btn.onclick=toggleMute;
   slider.oninput=()=>{ unlock(); vol=slider.value/100; muted=vol===0; apply(); };
   addEventListener('pointerdown',unlock,{once:true}); addEventListener('keydown',unlock,{once:true});
